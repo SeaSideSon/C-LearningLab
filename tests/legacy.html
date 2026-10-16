@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Learn C pointers one operation at a time. Follow addresses, inspect memory, and understand every change.">
+  <meta name="theme-color" content="#f6f7f9">
+  <title>C Pointer Lab · Step by step</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232b57e8'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='42' text-anchor='middle' fill='white'%3E*%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to simulator</a>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="brand-icon">*</span><span>Pointer<span class="brand-light">Lab</span><small>MAKE MEMORY MAKE SENSE</small></span></a>
+    <div class="course-info"><span class="eyebrow">YOUR LEARNING SPACE</span><h2>C Pointers</h2><p>One operation. One clear picture.</p><div class="course-progress"><span id="courseCount">0 of 11 explored</span><span class="course-dot"></span></div></div>
+    <nav id="lessons" aria-label="Pointer lessons"></nav>
+    <div class="sidebar-foot"><span class="private-icon" aria-hidden="true">▣</span><div><strong>Private learning space</strong><span>Built from your C Pointers work</span></div></div>
+  </aside>
+  <main id="workspace">
+    <header class="topbar"><span>THE C POINTERS SIMULATOR</span><div class="header-right"><button id="helpButton" class="quiet" aria-expanded="false" aria-controls="guide">How to use</button><span class="private-badge">● Private</span></div></header>
+    <div id="guide" class="guide" hidden><strong>Follow one operation at a time.</strong><p>Press Next step, read the highlighted C line, then compare the memory cells and Before → After values. Blue marks changed storage; amber marks reads. The explanation and terminal always show the same step.</p><p>Use Back to revisit a step, the timeline to jump, or Reset to start again. Keyboard: Right / Left arrows to step, R to reset, Space to play or pause. Notes stay in this browser.</p></div>
+    <section class="lesson-header"><div><div class="breadcrumb"><span id="lessonTag">Foundations</span><span> / </span><span id="lessonNumber">LESSON 01</span></div><h1 id="lessonTitle">Address & dereference</h1><p id="lessonSummary"></p></div><div class="header-symbol" aria-hidden="true">&amp;<span>*</span></div></section>
+    <section class="transport" aria-label="Execution controls">
+      <div class="transport-buttons"><button id="prev" class="button" title="Previous step (Left arrow)"><span aria-hidden="true">←</span> Back</button><button id="next" class="button primary" title="Next step (Right arrow)">Next step <span aria-hidden="true">→</span></button><button id="play" class="button" aria-label="Play automatic steps" aria-pressed="false"><span aria-hidden="true">▷</span> Play</button><button id="reset" class="reset-button" title="Reset lesson (R)">↺ <span>Reset</span></button></div>
+      <div class="step-position"><span id="stepLabel">Ready to run</span><label class="speed-label">Pace<select id="speed" aria-label="Automatic step duration"><option value="4000">4s · slow</option><option value="2500">2.5s</option><option value="1500">1.5s</option></select></label></div>
+      <label class="sr-only" for="timeline">Execution timeline</label><input id="timeline" type="range" min="0" value="0" max="1" aria-label="Execution timeline"><div class="timeline-labels"><span>Start</span><span id="operationCount"></span><span>Finish</span></div>
+    </section>
+    <div class="lab-grid">
+      <section class="panel code-panel" aria-labelledby="codeHeading"><div class="panel-heading"><h2 id="codeHeading"><span class="panel-dot navy"></span> Source code</h2><span id="fileName" class="file-badge">example.c</span></div><div class="code-caption">Complete runnable C · <span id="scopeLabel">main()</span></div><div id="code" class="code" aria-label="C source code"></div><div class="code-foot"><span class="live-dot"></span><span id="lineLabel">Execution starts in main</span></div></section>
+      <section class="panel memory-panel" aria-labelledby="memoryHeading"><div class="panel-heading"><h2 id="memoryHeading"><span class="panel-dot blue"></span> Memory</h2><span class="small-label">SIMULATED ADDRESSES</span></div><div class="legend"><span><i class="legend-square write"></i>Changed</span><span><i class="legend-square read"></i>Read</span><span>Click a cell to inspect</span></div><div id="memory" class="memory"></div><div id="inspector" class="inspector"><span class="inspector-icon">⌖</span><p>Choose a variable to compare its address, stored value, and target.</p></div><div class="connections"><div class="connection-heading"><h3>Follow the address</h3><span>pointer → object</span></div><div id="graph"></div></div></section>
+      <section class="panel coach-panel" aria-labelledby="coachHeading"><div class="panel-heading"><h2 id="coachHeading"><span class="panel-dot green"></span> Step companion</h2><span id="eventBadge" class="event-badge">READY</span></div><div class="coach-content" aria-live="polite" aria-atomic="true"><div class="step-eyebrow" id="coachStep">BEFORE EXECUTION</div><h3 id="stepTitle">Ready to run</h3><p id="what" class="what"></p><div class="flow-block"><span class="eyebrow">VALUE &amp; ADDRESS TRANSFER</span><p id="flow"></p></div><div class="observe-block"><span class="observe-icon" aria-hidden="true">◎</span><div><h4>What to observe</h4><p id="observe"></p></div></div><div class="change-heading"><h4>Before → After</h4><span id="changeCount"></span></div><div id="changes" class="changes"></div></div></section>
+    </div>
+    <section class="panel terminal-panel"><div class="panel-heading"><h2><span class="terminal-symbol">&gt;_</span> Terminal output</h2><span id="terminalStatus" class="small-label">WAITING FOR OUTPUT</span></div><div class="terminal-body"><span class="terminal-prompt" aria-hidden="true">$ ./example</span><pre id="terminal" aria-label="Terminal output"></pre><span id="terminalEmpty" class="terminal-empty">No output yet. Memory operations do not print.</span></div></section>
+    <div class="bottom-grid"><details class="notes-card"><summary><span>✎ My learning notes</span><span class="summary-hint">Saved in this browser</span></summary><label for="notes">Write what clicked, or what you want to revisit.</label><textarea id="notes" rows="4" placeholder="For example: p is an address; *p is the value at that address."></textarea><span id="notesStatus" class="small-label"></span></details><details class="notes-card"><summary><span>{ } Pointer field guide</span><span class="summary-hint">The core rules</span></summary><dl><dt><code>&amp;x</code></dt><dd>The address of the object x.</dd><dt><code>p</code></dt><dd>An address stored in a pointer variable.</dd><dt><code>&amp;p</code></dt><dd>The address of the pointer variable itself.</dd><dt><code>*p</code></dt><dd>The object reached by following p’s address.</dd><dt><code>tab[i]</code></dt><dd>The same element as <code>*(tab + i)</code>.</dd><dt><code>p + 1</code></dt><dd>The next element of the pointed type.</dd></dl><p>C passes arguments by value, including pointer values. A copied address can still reach the caller’s object.</p><p>Only dereference a pointer when it refers to a valid object of the right type. Uninitialized pointer values are shown as “uninitialized” and are never followed here.</p></details></div>
+    <footer><span>A teaching model, one C operation at a time.</span><span>Addresses are illustrative · int = 4 bytes in this model</span></footer>
+    <noscript>This interactive simulator requires JavaScript. Enable it to step through the C examples.</noscript>
+  </main>
+</body>
+</html>
