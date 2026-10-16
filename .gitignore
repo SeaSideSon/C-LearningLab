@@ -1,0 +1,13 @@
+# School assignment PDFs stay local.
+dist/sources/*.pdf
+
+# Local configuration and credentials
+.openai/
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.DS_Store
+*.swp
+node_modules/
