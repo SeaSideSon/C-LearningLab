@@ -1,0 +1,19 @@
+Browser-local tutor runtime
+
+WebLLM 0.2.85, by the MLC team (Apache License 2.0).
+https://github.com/mlc-ai/web-llm
+This pinned browser bundle was obtained from:
+https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.85/+esm
+The source-map comment was removed; runtime code is unchanged.
+The upstream license is included as WEBLLM-LICENSE.txt.
+
+The separately downloaded model is Qwen2.5-Coder-1.5B-Instruct,
+by the Qwen team (Apache License 2.0). Model weights are not
+included in this Site's deployment archive.
+https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct
+
+WebGPU artifacts are supplied by MLC:
+https://huggingface.co/mlc-ai/Qwen2.5-Coder-1.5B-Instruct-q4f16_1-MLC
+https://huggingface.co/mlc-ai/Qwen2.5-Coder-1.5B-Instruct-q4f32_1-MLC
+
+The application has no remote inference service or paid fallback.

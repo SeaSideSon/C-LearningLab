@@ -1,0 +1,3943 @@
+[
+  {
+    "slug": "00-c-project-tutorial",
+    "group": "00-tutorial",
+    "title": "Project tutorial",
+    "summary": "Get comfortable with the Unix file tree, a terminal, basic shell commands, SSH keys, and the Git workflow before starting the programming exercises.",
+    "why": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+    "prerequisites": [
+      "No previous programming knowledge required",
+      "A terminal and a project repository"
+    ],
+    "statedGoals": [
+      {
+        "text": "Introduce the basic skills and knowledge needed to start in good conditions.",
+        "page": 1
+      },
+      {
+        "text": "Build programming foundations through reasoning, repetition, autonomy, and peer learning.",
+        "page": 6
+      },
+      {
+        "text": "Identify and understand files, directories, tree structure, and the Unix root directory.",
+        "page": 9
+      },
+      {
+        "text": "Discover terminal commands, command options, the current directory, file listings, hidden files, navigation, creation, permissions, editing, removal, and manual pages.",
+        "page": 10
+      },
+      {
+        "text": "Research repositories and version control; understand why programmers save versions of their code.",
+        "page": 12
+      },
+      {
+        "text": "Generate an SSH key pair, share the public key, keep the private key secret, then clone the project repository.",
+        "page": 13
+      },
+      {
+        "text": "Practice untracked, staged, modified, committed, and pushed states and check that the remote copy contains the work.",
+        "page": 14
+      }
+    ],
+    "interpretation": "The tutorial builds the working environment around programming: locate the right file, change it deliberately, inspect the result, and save a reviewable history. The two exercises check exact file bytes and the ability to identify a public SSH key. The later C lessons rely on this workflow but do not require reproducing every tutorial command as a submission.",
+    "tutorialStages": [
+      {
+        "id": "stage1",
+        "title": "Tutorial: The tree of Life",
+        "page": 9,
+        "goal": "Understand that a path locates a file or directory within a tree, and that root and home are different places.",
+        "suggestedSimulation": "Path navigation",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      },
+      {
+        "id": "stage2",
+        "title": "Tutorial: Shell we dance?",
+        "page": 10,
+        "goal": "Connect each terminal command with a change in the current directory, file tree, file contents, or output. Some commands only inspect state.",
+        "suggestedSimulation": "Shell workspace",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      },
+      {
+        "id": "stage3",
+        "title": "Tutorial: Let’s GIT !",
+        "page": 12,
+        "goal": "Keep working files, the staging area, local commits, and the remote repository distinct. SSH authentication allows access but is not a commit.",
+        "suggestedSimulation": "Git snapshots and transfer",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      }
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "Z",
+        "page": 16,
+        "requirements": [
+          "Directory: ex0/; submit only the file z.",
+          "The contents shown by cat z must be Z followed by a newline.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Files and byte contents",
+          "Terminal output",
+          "Newline",
+          "Exact output"
+        ],
+        "goal": "Learn that a file stores bytes and that displaying it copies those bytes to the terminal. A final newline is part of the required data.",
+        "connection": "The shell tutorial taught file creation, editing, and displaying contents. This exercise checks that those actions produce the exact result.",
+        "observe": "Watch the file change from absent to containing the two bytes Z and newline. cat changes terminal output without changing the file.",
+        "suggestedSimulation": "File bytes and terminal output",
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "SSH me!",
+        "page": 17,
+        "requirements": [
+          "Directory: ex1/; submit only id_ed25519.pub.",
+          "Create your own SSH key and place the public key in the repository under the required filename.",
+          "Understand the difference between public and private keys.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "SSH key pair",
+          "Public versus private",
+          "Authentication",
+          "Repository submission"
+        ],
+        "goal": "Learn which key can be shared to identify your computer and which key must remain private. The public key is the exercise deliverable.",
+        "connection": "The tutorial Git workflow uses SSH authentication before cloning and pushing. Knowing paths and file contents helps locate the public key.",
+        "observe": "Use fictional keys in the simulation. Show that key generation produces two distinct files, while copying the public key to ex1 leaves the private key outside the submitted repository.",
+        "suggestedSimulation": "SSH public and private files",
+        "simulations": [
+          "ssh"
+        ]
+      },
+      {
+        "id": "stage1",
+        "title": "Tutorial: The tree of Life",
+        "page": 9,
+        "goal": "Understand that a path locates a file or directory within a tree, and that root and home are different places.",
+        "suggestedSimulation": "Path navigation",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      },
+      {
+        "id": "stage2",
+        "title": "Tutorial: Shell we dance?",
+        "page": 10,
+        "goal": "Connect each terminal command with a change in the current directory, file tree, file contents, or output. Some commands only inspect state.",
+        "suggestedSimulation": "Shell workspace",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      },
+      {
+        "id": "stage3",
+        "title": "Tutorial: Let’s GIT !",
+        "page": 12,
+        "goal": "Keep working files, the staging area, local commits, and the remote repository distinct. SSH authentication allows access but is not a commit.",
+        "suggestedSimulation": "Git snapshots and transfer",
+        "requirements": [],
+        "concepts": [],
+        "connection": "A C source file lives in a directory, is edited and compiled through tools, and is submitted through Git. Knowing these tools makes the later programming tasks easier to start, test, and explain.",
+        "observe": "Watch each operation change the displayed state.",
+        "supplementary": true,
+        "simulations": [
+          "shell",
+          "write-char",
+          "git"
+        ]
+      }
+    ],
+    "sourceNotes": [
+      "PDF page numbers here count from the cover; the printed page numbers are three lower.",
+      "The cleanup example on PDF page 15 names test.text although the earlier file is test.txt; use a consistently named fictional demo rather than copying that typo.",
+      "The tutorial describes git status loosely as a difference with GitHub; explain working-tree/index/local-HEAD state and the locally known upstream comparison accurately.",
+      "Page 10 claims all commands provide a help option; help mechanisms vary, so teach man and shell builtin help without generalizing that claim."
+    ],
+    "source": "00-c-project-tutorial.pdf",
+    "path": "Modules\\00-tutorial\\00-c-project-tutorial"
+  },
+  {
+    "slug": "00-shell-fundamentals",
+    "group": "01-shell",
+    "title": "Shell fundamentals",
+    "summary": "Create and inspect Unix files, directories, permissions, timestamps, links, listings, archives, and names containing special shell characters.",
+    "why": "Commands act on files and metadata, not just the text inside them. Correct paths, quoting, permissions, and submitted archives are essential when compiling and submitting C projects.",
+    "prerequisites": [
+      "00-c-project-tutorial",
+      "Current directory and paths",
+      "Files versus directories",
+      "Basic terminal commands"
+    ],
+    "statedGoals": [
+      {
+        "text": "Learn shell scripting basics, file manipulation, and Unix permission handling.",
+        "page": 1
+      },
+      {
+        "text": "Build foundations through reasoning, peer learning, and developing the ability to find solutions.",
+        "page": 6
+      }
+    ],
+    "interpretation": "The exercises turn a long file listing into a specification. They ask you to control individual metadata fields and understand why the shell treats some filename characters as syntax unless they are quoted or escaped. Hard links and symbolic links are inferred learning targets from the requested link counts and listing.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "testShell00",
+        "page": 10,
+        "requirements": [
+          "Directory: ex0/; submit testShell00.tar.",
+          "Create testShell00 with listing attributes -r--r-xr-x, one link, 40-byte size, and modification date Jun 1 23:42.",
+          "The total line and fields marked XX are not required to match.",
+          "Create the archive with tar -cf testShell00.tar testShell00.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Long listing fields",
+          "Permission bits",
+          "File size",
+          "Modification timestamp",
+          "Tar archive"
+        ],
+        "goal": "Read a long listing as separate facts and change each required fact deliberately. File contents, permissions, and timestamps are different parts of file state.",
+        "connection": "The tutorial introduced editing, listings, and access rights. This task requires exact control of those attributes and packaging the result.",
+        "observe": "Highlight only the metadata changed by each command: writing affects bytes, chmod affects access rights, touch can affect time, and tar creates a separate archive.",
+        "suggestedSimulation": "File attributes and archive",
+        "simulations": [
+          "shell",
+          "search"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "Oh yeah, mooore...",
+        "page": 11,
+        "requirements": [
+          "Directory: ex1/; submit ex1.tar.",
+          "Create the listed directories and files test0 through test6 so ls -l matches all specified fields; XX fields may differ.",
+          "test0: directory, rwx--xr-x, link count 2, Jun 1 20:47. test1: regular file, rwx--xr--, link count 1, 4 bytes, Jun 1 21:46.",
+          "test2: directory, r-x---r--, link count 2, Jun 1 22:45. test3: regular file, r-----r--, link count 2, 1 byte, Jun 1 23:44.",
+          "test4: regular file, rw-r----x, link count 1, 2 bytes, Jun 1 23:43. test5: regular file, r-----r--, link count 2, 1 byte, Jun 1 23:44.",
+          "test6: symbolic link to test0, lrwxrwxrwx, link count 1, displayed size 5, Jun 1 22:20.",
+          "Create the submission archive with tar -cf ex1.tar * after the requested entries exist.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Files versus directories",
+          "Owner/group/other permissions",
+          "Hard links",
+          "Symbolic links",
+          "Link counts",
+          "Timestamps",
+          "Archiving"
+        ],
+        "goal": "Learn that names and stored file data are separate. A hard link gives the same underlying file another name; a symbolic link stores a path to follow. Directory permissions control different actions from file permissions.",
+        "connection": "The first exercise controlled a single file. This one adds several entry types, relationships, and independent metadata values.",
+        "observe": "Show two hard-linked names sharing one inode and contents, while a symbolic link has its own inode and target text. Highlight shared changes and separately show directory traversal permission.",
+        "suggestedSimulation": "Hard and symbolic links",
+        "simulations": [
+          "shell",
+          "search"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "midLS",
+        "page": 13,
+        "requirements": [
+          "Directory: ex2/; submit midLS containing the requested command line.",
+          "List files and directories in the current directory, excluding hidden entries and all names beginning with a dot, including dot and dot-dot.",
+          "Separate names with a comma followed by a space, order them by modification date, and add a slash after directory names.",
+          "Do not add unrequested output.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Listing options",
+          "Hidden entries",
+          "Modification-time ordering",
+          "Output formatting",
+          "Directory suffix"
+        ],
+        "goal": "Choose command options according to a required result, then inspect how filtering, ordering, and formatting affect the same set of directory entries.",
+        "connection": "Earlier listings revealed metadata. Here modification time becomes the ordering key, and file type controls a visible suffix.",
+        "observe": "The file tree stays unchanged. Watch dot-prefixed names disappear from the displayed list, dates determine order, and directory names receive slashes.",
+        "suggestedSimulation": "Filter and format a listing",
+        "simulations": [
+          "shell",
+          "search"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "Can you create it ?",
+        "page": 14,
+        "requirements": [
+          "Directory: ex3/; submit the file whose exact name is shown in the subject: \"\\?$*'MaRViN'*$?\\\".",
+          "The file must contain exactly the two bytes 42, with no newline or other content.",
+          "The example listing also shows -rw---xr-- permissions and a 2-byte size; inspect the example details.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Shell quoting",
+          "Escaping",
+          "Literal filenames",
+          "Wildcards",
+          "Variable-expansion characters",
+          "No final newline"
+        ],
+        "goal": "Separate literal characters from shell syntax. Quotes and backslashes can be data in a filename, while unprotected shell characters can change how a command is interpreted.",
+        "connection": "Creating ordinary filenames was simple. This task requires the same file operation while controlling how the shell parses the name and the exact contents.",
+        "observe": "Show the requested name as literal data, highlight which command characters protect it from interpretation, and show a two-byte file without a newline.",
+        "suggestedSimulation": "Quoting special filename characters",
+        "simulations": [
+          "shell",
+          "search"
+        ]
+      }
+    ],
+    "sourceNotes": [
+      "Exercise 0 is titled testShell00 in the chapter heading and What are attributes anyway ? in the exercise table; this record uses the chapter title.",
+      "Exercise 1 explicitly specifies link counts and matching attributes for test3/test5. Treat the shared-hard-link relationship as the inferred teaching concept rather than an additional written instruction.",
+      "Exercise 3 shows straight apostrophes in the submission table but typographic right apostrophes in terminal examples. This record preserves the ASCII form from the submission table; the inconsistency should be identified in source guidance.",
+      "Exercise 3 owner/group/time appear only in the example and are not explicitly prescribed, unlike the detailed requirements in exercises 0 and 1."
+    ],
+    "source": "00-shell-fundamentals.pdf",
+    "path": "Modules\\01-shell\\00-shell-fundamentals"
+  },
+  {
+    "slug": "01-git-fundamentals",
+    "group": "01-shell",
+    "title": "Git fundamentals",
+    "summary": "Inspect the history of a Git repository and list existing ignored files through small shell scripts.",
+    "why": "Git records versions of source files. History helps explain what was changed, and ignore rules keep generated binaries, object files, and unrelated local files out of the submitted project.",
+    "prerequisites": [
+      "00-c-project-tutorial",
+      "00-shell-fundamentals",
+      "Repository, commit, staging, and shell scripts"
+    ],
+    "statedGoals": [
+      {
+        "text": "Learn and practice fundamental Git commands and SSH key management through shell scripting.",
+        "page": 1
+      },
+      {
+        "text": "Build foundations through reasoning and peer-learning exchange.",
+        "page": 6
+      }
+    ],
+    "interpretation": "The two numbered exercises focus on querying Git's state: recent commit identifiers and files matched by ignore rules. SSH key management is part of the stated module summary, but it is not a separate numbered exercise here; it was directly practiced in the project tutorial.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "GiT commit",
+        "page": 9,
+        "requirements": [
+          "Directory: ex0/; submit git_commit.sh.",
+          "Create a shell script that displays the identifiers of the last five commits in the Git repository.",
+          "The sample output shows a full commit identifier on each line, with no other commit information.",
+          "The evaluator will run the script in its own environment; do not hard-code the example identifiers.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Commit history",
+          "Commit identifiers",
+          "Selecting recent entries",
+          "Script output",
+          "Environment-independent queries"
+        ],
+        "goal": "Ask Git for repository history and select the fields and number of entries the task requests. Commit identifiers come from the repository being inspected.",
+        "connection": "The tutorial created commits and used a history command. This task narrows that history to exact, script-friendly output.",
+        "observe": "Show a fictional commit chain with HEAD at its latest commit. Select the five newest identifiers in history order; the query changes output but creates no commit.",
+        "suggestedSimulation": "Query five recent commits",
+        "simulations": [
+          "git",
+          "ssh"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "gitignore",
+        "page": 10,
+        "requirements": [
+          "Directory: ex1/; submit git_ignore.sh.",
+          "Write a short shell script that lists all existing files ignored by the Git repository.",
+          "The evaluator will use its own environment; query actual ignored files rather than copying the sample names.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Ignore rules",
+          "Existing ignored files",
+          "Tracked versus untracked",
+          "Repository cleanliness"
+        ],
+        "goal": "Understand that an ignore pattern is a rule while an ignored file is an existing entry matched by a rule. Already tracked files do not become untracked merely because an ignore rule is added.",
+        "connection": "The tutorial showed untracked, staged, and committed files. Ignore handling adds another distinction useful for keeping compiler outputs out of commits.",
+        "observe": "Show the file tree beside ignore patterns and Git status. A rule matches existing untracked examples; listing ignored files leaves them on disk.",
+        "suggestedSimulation": "Ignore rules and existing files",
+        "simulations": [
+          "git",
+          "ssh"
+        ]
+      }
+    ],
+    "sourceNotes": [
+      "Exercise 0 is GiT commit in the chapter title and GiT commit? in the assignment table; exercise 1 is gitignore in the heading but GiT in the table. Records use the chapter headings."
+    ],
+    "source": "01-git-fundamentals.pdf",
+    "path": "Modules\\01-shell\\01-git-fundamentals"
+  },
+  {
+    "slug": "02-shell-searching-and-finding",
+    "group": "01-shell",
+    "title": "Shell searching and finding",
+    "summary": "Search a directory tree, select entries by name or type, transform output, remove selected files, and count files and directories.",
+    "why": "As projects grow, a command must reliably inspect many nested entries. Search predicates, exact output, and deliberate deletion are useful for locating source files and managing build artifacts.",
+    "prerequisites": [
+      "00-shell-fundamentals",
+      "Paths and directory trees",
+      "Shell quoting",
+      "Files versus directories",
+      "Command output"
+    ],
+    "statedGoals": [
+      {
+        "text": "Learn to search, filter, and manipulate files using shell scripting and Unix command-line utilities.",
+        "page": 1
+      },
+      {
+        "text": "Build foundations through reasoning, verification, and peer-learning exchange.",
+        "page": 6
+      }
+    ],
+    "interpretation": "These exercises combine recursive traversal with selection rules and an action. The learning progression is to display selected names, then act on selected files, then count selected entry types. Exact matching and traversal scope matter as much as choosing a command.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "find_sh",
+        "page": 9,
+        "requirements": [
+          "Directory: ex0/; submit find_sh.sh.",
+          "Write a command line searching the current directory and every subdirectory for filenames ending in .sh.",
+          "Display only the filenames, without the .sh extension; do not retain directory paths.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Recursive traversal",
+          "Suffix matching",
+          "Basename versus path",
+          "Removing a suffix",
+          "Quoting patterns"
+        ],
+        "goal": "Turn a nested directory tree into a list, select names by a pattern, and transform each matching path into the output the task asks for.",
+        "connection": "The file-tree tutorial explains why searching the current directory is different from searching every descendant. Shell quoting prevents the current shell from expanding the pattern too early.",
+        "observe": "Highlight each visited entry, whether its filename matches, and how a matching path becomes a basename with its final .sh removed. No files change.",
+        "suggestedSimulation": "Recursive search and name transformation",
+        "simulations": [
+          "search"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "clean",
+        "page": 10,
+        "requirements": [
+          "Directory: ex1/; submit clean containing the command line.",
+          "Search the current directory and all subdirectories for files ending in ~, or whose name both starts and ends with #.",
+          "Display and delete every found file.",
+          "Use only one command; no semicolon, &&, or other command-chaining tricks.",
+          "The subject directs students to man find.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Recursive search",
+          "OR predicates",
+          "Pattern boundaries",
+          "File-type filtering",
+          "Printing and deletion actions",
+          "One-command expression"
+        ],
+        "goal": "Express two selection rules in one search and apply an action only to matches. Understand which names qualify before any deletion happens.",
+        "connection": "find_sh only displayed matches. clean uses the same traversal idea but adds a state-changing action and combines two name patterns.",
+        "observe": "Use a virtual file tree. Highlight matches, show their names in output, and remove only those matched entries from the after-state. Include near-misses such as #draft and draft#.",
+        "suggestedSimulation": "Select, display, and remove backup files",
+        "simulations": [
+          "search"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "count_files",
+        "page": 11,
+        "requirements": [
+          "Directory: ex2/; submit count_files.sh.",
+          "Write a command line counting and displaying all regular files and directories in the current directory and every subdirectory.",
+          "Include the starting directory . in the count.",
+          "The sample 42 is illustrative; derive the count from the actual tree.",
+          "Authorized field: None."
+        ],
+        "concepts": [
+          "Recursive traversal",
+          "Entry types",
+          "Counting",
+          "Including the root of a search",
+          "Read-only command"
+        ],
+        "goal": "Count entries by their types and scope. The starting directory is one of the directories being counted, not just a place to begin.",
+        "connection": "Earlier exercises selected entries by their names. Here selection uses file type, then combines the selected entries into one number.",
+        "observe": "Increment a visible count for each regular file or directory, including .; show excluded entry types separately. Output is one final number and the tree remains unchanged.",
+        "suggestedSimulation": "Traverse and count entries",
+        "simulations": [
+          "search"
+        ]
+      }
+    ],
+    "sourceNotes": [
+      "The assignment tables say find_sh.sh and count_files.sh, while their chapter headings are find_sh and count_files. Records use chapter headings and preserve required submission filenames separately."
+    ],
+    "source": "02-shell-searching-and-finding.pdf",
+    "path": "Modules\\01-shell\\02-shell-searching-and-finding"
+  },
+  {
+    "slug": "00-c-programming-fundamentals",
+    "group": "02-imperative-programming",
+    "title": "C Programming Fundamentals",
+    "summary": "Make small C functions that display characters, walk through letters and digits, and choose output based on a number's sign.",
+    "why": "These exercises make the execution of a program visible. You learn that computing a value and displaying that value are separate actions, and that a loop needs a starting value, a condition, and a change that eventually stops it.",
+    "prerequisites": [
+      "Create and edit a text file",
+      "Navigate a directory in the shell",
+      "Compile a C source file with cc",
+      "Run a program with ./program"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement fundamental C functions to display characters, the alphabet, numbers, and check integer signs using standard output.",
+        "page": 1
+      },
+      {
+        "text": "Understand how computers store and manipulate data before writing the first C program.",
+        "page": 9
+      },
+      {
+        "text": "Practice loops and conditional branches, both separately and together.",
+        "page": 11
+      },
+      {
+        "text": "Develop programming foundations through practice, experimentation, and discussion with peers.",
+        "page": 11
+      }
+    ],
+    "interpretation": "The exercise sequence appears designed to build a mental model of declarations, assignments, character values, function parameters, loops, and if/else decisions. A beginner should be able to predict the next value and the next visible character before advancing. The tutorial also introduces an empty main, compilation, invisible calculation, ASCII values, and changing a loop counter; these are useful introductory simulations even though they are not numbered exercises.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_putchar",
+        "page": 12,
+        "requirements": [
+          "Submit ex0/ft_putchar.c.",
+          "Prototype: void ft_putchar(char c);",
+          "Display the character supplied as the parameter.",
+          "Authorized function: write.",
+          "The subject explicitly specifies write(1, &c, 1) to display the character.",
+          "Submit the requested function, without a main; a separate main can be used as a learning/test harness.",
+          "The module requires cc with -Wall -Wextra -Werror and the 42 Norm."
+        ],
+        "concepts": [
+          "char",
+          "function parameter",
+          "argument copied into parameter",
+          "address-of operator &",
+          "standard output",
+          "write"
+        ],
+        "goal": "Understand how a character travels from a call into a function and then becomes visible terminal output.",
+        "connection": "A shell command runs the compiled program. Inside that program, main can call a smaller function with a character as its argument.",
+        "observe": "The parameter c receives its own character value. &c identifies where that value is stored. write receives that address and reads one byte for output; it does not change c. The first 1 selects standard output, and the last 1 is the byte count.",
+        "suggestedSimulation": "Call a one-character printer",
+        "simulations": [
+          "write-char"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_print_alphabet",
+        "page": 13,
+        "requirements": [
+          "Submit ex1/ft_print_alphabet.c.",
+          "Prototype: void ft_print_alphabet(void);",
+          "Display the lowercase alphabet on one line in ascending order, starting at 'a'.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "while loop",
+          "character ordering",
+          "initialization",
+          "increment",
+          "loop condition"
+        ],
+        "goal": "Learn to repeat a small action while moving through an ordered range.",
+        "connection": "Repeat the one-character output operation from ft_putchar. A changing variable selects a different character each time.",
+        "observe": "The condition is checked before each iteration. Printing changes terminal output while leaving the character unchanged; incrementing changes the character while leaving existing output unchanged. On an ASCII-based learning example, 'a' + 1 gives 'b'. After 'z', the condition becomes false.",
+        "suggestedSimulation": "Walk forward through characters",
+        "simulations": [
+          "alphabet"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_print_reverse_alphabet",
+        "page": 14,
+        "requirements": [
+          "Submit ex2/ft_print_reverse_alphabet.c.",
+          "Prototype: void ft_print_reverse_alphabet(void);",
+          "Display the lowercase alphabet on one line in descending order, starting at 'z'.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "decrement",
+          "descending loop",
+          "comparison direction",
+          "loop termination"
+        ],
+        "goal": "Learn how the starting point, condition, and direction of change work together in a loop.",
+        "connection": "Use the same loop structure as the forward alphabet, but start at the other end and move downward.",
+        "observe": "Compare the variable before and after a decrement, and follow the accumulated output. The stopping comparison must match a descending loop. The final valid character is printed before the next condition becomes false.",
+        "suggestedSimulation": "Walk backward through characters",
+        "simulations": [
+          "reverse-alphabet"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_print_numbers",
+        "page": 15,
+        "requirements": [
+          "Submit ex3/ft_print_numbers.c.",
+          "Prototype: void ft_print_numbers(void);",
+          "Display all digits on one line in ascending order.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "digit character",
+          "integer versus character",
+          "character arithmetic",
+          "loop bounds"
+        ],
+        "goal": "Distinguish a numerical value from the character used to display that number.",
+        "connection": "The alphabet loop also applies to the ordered digit characters '0' through '9'.",
+        "observe": "In an ASCII example, the character '0' has code 48, which differs from the integer 0. Adding an integer digit to '0' produces the printable digit character. write prints bytes, so writing the raw low byte of integer 5 would not print the character '5'.",
+        "suggestedSimulation": "Numbers and printable digit characters",
+        "simulations": [
+          "numbers"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_is_negative",
+        "page": 16,
+        "requirements": [
+          "Submit ex4/ft_is_negative.c.",
+          "Prototype: void ft_is_negative(int n);",
+          "Display 'N' when n is negative; display 'P' when n is positive or zero.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "int parameter",
+          "comparison",
+          "if/else",
+          "mutually exclusive branches",
+          "zero boundary"
+        ],
+        "goal": "Learn how a comparison selects exactly one path through the program.",
+        "connection": "Earlier examples repeat output through loops. This example chooses one output using a condition.",
+        "observe": "Show the copied parameter n, the truth value of n < 0, the selected line, and the skipped branch. Demonstrate a negative number, zero, and a positive number; zero belongs to the 'P' branch.",
+        "suggestedSimulation": "Choose a branch from a number's sign",
+        "simulations": [
+          "sign"
+        ]
+      }
+    ],
+    "source": "00-c-programming-fundamentals.pdf",
+    "path": "Modules\\02-imperative-programming\\00-c-programming-fundamentals"
+  },
+  {
+    "slug": "01-c-character-arithmetics",
+    "group": "02-imperative-programming",
+    "title": "C Character Arithmetic",
+    "summary": "Convert numbers into printable characters and use ordered loops to generate combinations without duplicates.",
+    "why": "C does not automatically turn an integer into a sequence of display characters when write is used. Division and remainder help extract digits; well-chosen loop bounds help generate exactly the combinations requested.",
+    "prerequisites": [
+      "char and int values",
+      "write and standard output",
+      "while loops",
+      "if/else",
+      "basic arithmetic",
+      "function parameters"
+    ],
+    "statedGoals": [
+      {
+        "text": "Focus on number manipulation and arithmetic operations in C.",
+        "page": 1
+      }
+    ],
+    "interpretation": "These exercises appear to develop decimal decomposition, the difference between digits and digit characters, nested loops, ordering constraints, and exact output formatting. ft_putnbr also requires careful thinking about the smallest representable int because its positive counterpart might not fit in the same int type. Generating combinations teaches how to avoid duplicates through the construction of candidates instead of filtering every possible candidate afterwards.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_putnbr",
+        "page": 9,
+        "requirements": [
+          "Submit ex0/ft_putnbr.c.",
+          "Prototype: void ft_putnbr(int nb);",
+          "Display the integer passed as a parameter.",
+          "Support every value representable by int, including zero and the minimum int value.",
+          "Authorized function: write.",
+          "The subject's example displays 42 for ft_putnbr(42).",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "decimal digits",
+          "integer division",
+          "remainder",
+          "negative numbers",
+          "digit-to-character conversion",
+          "int limits",
+          "output order"
+        ],
+        "goal": "Understand how a multi-digit number becomes several character writes in the correct order.",
+        "connection": "Build on printing one digit. Division by 10 separates earlier digits, remainder by 10 finds the last digit, and adding '0' makes a printable character.",
+        "observe": "Use a small input such as 426 to show division and remainder. Show why discovering the final digit first does not mean printing it first. Trace zero separately and explain that negating the minimum int directly can overflow; the teaching example must use a safe approach. If recursion is chosen, distinguish each call's own nb and the output produced as calls return.",
+        "suggestedSimulation": "Turn an integer into characters",
+        "simulations": [
+          "digit",
+          "factorial-recursive"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_print_comb",
+        "page": 10,
+        "requirements": [
+          "Submit ex1/ft_print_comb.c.",
+          "Prototype: void ft_print_comb(void);",
+          "Display all combinations of three different digits, with digits ascending within each combination and combinations listed in ascending order.",
+          "The illustrated output starts 012, 013, 014 and ends 789, with comma-space separators.",
+          "Do not include an alternate ordering such as 987 when 789 is already included, or repeated digits such as 999.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "nested loops",
+          "a < b < c",
+          "distinct values",
+          "combinations versus permutations",
+          "loop reset",
+          "separator conditions"
+        ],
+        "goal": "Learn to use relationships between loop variables to generate unique ordered combinations.",
+        "connection": "Expand a one-variable character loop into three related loops. Conditions decide when a comma-space separator is needed.",
+        "observe": "Show the three counters together. When the innermost loop ends, its outer counter advances and it is reinitialized from that counter. a < b < c automatically prevents repeated digits and alternate orders. At 789, output formatting changes so no further separator is written.",
+        "suggestedSimulation": "Three counters generate unique combinations",
+        "simulations": [
+          "combinations"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_print_comb2",
+        "page": 11,
+        "requirements": [
+          "Submit ex2/ft_print_comb2.c.",
+          "Prototype: void ft_print_comb2(void);",
+          "Display every different combination of two two-digit numbers between 00 and 99 in ascending order.",
+          "The illustrated output starts 00 01, 00 02 and ends 97 99, 98 99, using a space within each pair and comma-space separators between pairs.",
+          "Represent each number with two digits, including a leading zero where needed.",
+          "The illustrated ascending pairs use a smaller first number than second number.",
+          "Authorized function: write.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "nested loops",
+          "a < b",
+          "integer division",
+          "remainder",
+          "leading zero",
+          "fixed-width output",
+          "final separator"
+        ],
+        "goal": "Combine ordered pair generation with converting each number into its tens and units characters.",
+        "connection": "Use the distinct ordered-counter idea from ft_print_comb and the digit extraction idea from ft_putnbr.",
+        "observe": "Track a and b independently from the four output characters. For value 7, integer division by 10 gives 0 and remainder gives 7, producing '0' and '7'. The second loop restarts at a + 1. At pair 98 99, skip the following separator.",
+        "suggestedSimulation": "Generate ordered pairs with two-digit formatting",
+        "simulations": [
+          "combinations",
+          "digit"
+        ]
+      }
+    ],
+    "source": "01-c-character-arithmetics.pdf",
+    "path": "Modules\\02-imperative-programming\\01-c-character-arithmetics"
+  },
+  {
+    "slug": "02-c-algorithmics-fundamentals",
+    "group": "02-imperative-programming",
+    "title": "C Algorithmic Fundamentals",
+    "summary": "Solve small mathematical problems using loops and recursive calls, then follow how computed results return to the caller.",
+    "why": "Comparing iterative and recursive versions helps separate a problem's rule from the method used to execute it. Tracing parameters, local variables, waiting calls, and return values prepares you for strings, linked structures, trees, and backtracking.",
+    "prerequisites": [
+      "int arithmetic",
+      "comparisons",
+      "while loops",
+      "if/else",
+      "function calls and parameters",
+      "return values"
+    ],
+    "statedGoals": [
+      {
+        "text": "Introduce fundamental algorithmic concepts in C, focusing on recursion, mathematical computations, and problem-solving techniques.",
+        "page": 1
+      },
+      {
+        "text": "Understand the execution timeline in which a caller waits while a called function runs and continues after the called function returns.",
+        "page": 9
+      },
+      {
+        "text": "Understand that recursive calls have distinct parameters and ordinary local variables.",
+        "page": 11
+      },
+      {
+        "text": "Calculate a total through the return values of recursive calls rather than returning a fixed number.",
+        "page": 11
+      }
+    ],
+    "interpretation": "The paired factorial and power exercises appear designed to compare a loop's changing accumulator with a recursive chain of waiting calls. Fibonacci introduces a function that makes two smaller recursive calls. The tutorial stresses stopping recursion and finite memory. Its static count variable is shared by calls, unlike ordinary automatic local variables; a simulator should make that distinction explicit if it discusses the tutorial's counter. Use small values with defined arithmetic; these exercises explicitly do not ask students to handle integer overflow.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_iterative_factorial",
+        "page": 12,
+        "requirements": [
+          "Submit ex0/ft_iterative_factorial.c.",
+          "Prototype: int ft_iterative_factorial(int nb);",
+          "Use an iterative function to return the factorial of the supplied number.",
+          "Return 0 for an invalid argument; the exercise does not define the word 'invalid' further.",
+          "Overflow must not be handled; the subject says the resulting function return is undefined.",
+          "Authorized functions: none.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "accumulator",
+          "iteration",
+          "factorial",
+          "loop progress",
+          "return value",
+          "invalid input"
+        ],
+        "goal": "Learn to build a result by repeatedly updating one accumulator and then return it.",
+        "connection": "The earlier loops printed a character on each iteration. This loop changes a numerical result instead, and returns that result to its caller.",
+        "observe": "Trace a small factorial such as 4! through an accumulator and counter. Show multiplication before and after every iteration, why the initial product is 1, and how returning a result differs from printing. Mathematical factorial supplies 0! = 1 and negative inputs as invalid; label these explanations as interpretation of the mathematical operation.",
+        "suggestedSimulation": "Build a factorial with an accumulator",
+        "simulations": [
+          "factorial-loop"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_recursive_factorial",
+        "page": 13,
+        "requirements": [
+          "Submit ex1/ft_recursive_factorial.c.",
+          "Prototype: int ft_recursive_factorial(int nb);",
+          "Use recursion to return the factorial of the supplied number.",
+          "Return 0 for an invalid argument; the exercise does not define the word 'invalid' further.",
+          "Overflow must not be handled; the subject says the resulting function return is undefined.",
+          "Authorized functions: none; the required recursive call to the function itself is part of the exercise.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "recursion",
+          "base case",
+          "call frames",
+          "copied parameters",
+          "waiting multiplication",
+          "return propagation"
+        ],
+        "goal": "Understand that each recursive call works on a smaller input while its caller waits for a result.",
+        "connection": "Use the same factorial rule as the iterative exercise. Instead of updating one accumulator, keep separate calls whose unfinished multiplication resumes after the smaller call returns.",
+        "observe": "For 4!, show distinct nb values in each call. The caller retains its own nb when it passes nb - 1. A base case returns 1; the result then travels back through waiting multiplications. Avoid depicting all calls as sharing a single nb variable.",
+        "suggestedSimulation": "Factorial calls descend and return",
+        "simulations": [
+          "factorial-recursive"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_iterative_power",
+        "page": 14,
+        "requirements": [
+          "Submit ex2/ft_iterative_power.c.",
+          "Prototype: int ft_iterative_power(int nb, int power);",
+          "Use iteration to return nb raised to power.",
+          "A negative power returns 0.",
+          "Overflow must not be handled.",
+          "The subject explicitly defines 0 to power 0 as returning 1.",
+          "Authorized functions: none.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "repeated multiplication",
+          "two parameters",
+          "counted loop",
+          "identity value",
+          "zero exponent",
+          "negative exponent"
+        ],
+        "goal": "Learn how a loop count and a multiplication value play different roles in a calculation.",
+        "connection": "Like iterative factorial, an accumulator starts at 1. Here the multiplier stays fixed while the number of multiplications depends on power.",
+        "observe": "Trace 2 raised to 3 as successive results 1, 2, 4, 8. Show which value stays constant and which value controls termination. With exponent zero, no multiplication is needed and the initial result 1 is returned. A negative exponent takes the early return path.",
+        "suggestedSimulation": "Count repeated multiplications",
+        "simulations": [
+          "power-loop"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_recursive_power",
+        "page": 15,
+        "requirements": [
+          "Submit ex3/ft_recursive_power.c.",
+          "Prototype: int ft_recursive_power(int nb, int power);",
+          "Use recursion to return nb raised to power.",
+          "A negative power returns 0.",
+          "Overflow must not be handled; the subject says the resulting function return is undefined.",
+          "The subject explicitly defines 0 to power 0 as returning 1.",
+          "Authorized functions: none; the required recursive call to the function itself is part of the exercise.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "recursion",
+          "two copied parameters",
+          "base case",
+          "unchanged base",
+          "decreasing exponent",
+          "return propagation"
+        ],
+        "goal": "Follow a recursive problem in which one parameter stays the same while the other moves toward a stopping case.",
+        "connection": "Compare recursive factorial and iterative power. Each call copies the base and a smaller exponent, then waits to multiply its returned result by the base.",
+        "observe": "Trace 2 raised to 3. Show separate call frames with exponents 3, 2, 1, 0 and the same base 2. The zero-exponent call returns 1. Show each waiting multiplication resume in order; include the explicit 0^0 rule and negative-exponent early return.",
+        "suggestedSimulation": "A fixed base through recursive calls",
+        "simulations": [
+          "power-recursive"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_fibonacci",
+        "page": 16,
+        "requirements": [
+          "Submit ex4/ft_fibonacci.c.",
+          "Prototype: int ft_fibonacci(int index);",
+          "Return the element at the supplied zero-based index in the Fibonacci sequence, beginning 0, 1, 1, 2.",
+          "The function must be recursive.",
+          "A negative index returns -1.",
+          "Overflow must not be handled; the subject says the resulting function return is undefined.",
+          "Authorized functions: none; the required recursive calls to the function itself are part of the exercise.",
+          "Submit the function; main is not requested."
+        ],
+        "concepts": [
+          "two recursive calls",
+          "base cases",
+          "zero-based index",
+          "call tree",
+          "repeated subproblems",
+          "return-value addition"
+        ],
+        "goal": "Understand how a recursive result can depend on two smaller results, and why two base cases are needed.",
+        "connection": "Factorial and power each need one smaller recursive result. Fibonacci needs two; the index is a position rather than the value at that position.",
+        "observe": "Use a small index such as 4. Show index 0 returning 0 and index 1 returning 1, then show results being added. Multiple calls can calculate the same index but still have separate call frames. Do not claim that C guarantees left-to-right evaluation of the two operands in fib(n - 1) + fib(n - 2); the teaching example can assign each result in a separate statement to make the displayed order explicit.",
+        "suggestedSimulation": "Two branches combine into Fibonacci",
+        "simulations": [
+          "fibonacci"
+        ]
+      }
+    ],
+    "source": "02-c-algorithmics-fundamentals.pdf",
+    "path": "Modules\\02-imperative-programming\\02-c-algorithmics-fundamentals"
+  },
+  {
+    "slug": "00-c-pointers",
+    "group": "03-memory-management",
+    "title": "C Pointers",
+    "summary": "A pointer stores an address. Follow that address to read or change an existing value, then use this idea to exchange numbers and rearrange arrays.",
+    "why": "Pointers let a function work on the caller's variables and let one parameter describe an entire array. They prepare you for strings, allocated memory, and linked structures.",
+    "prerequisites": [
+      "Variables and types",
+      "Function parameters",
+      "Assignment",
+      "Integer arithmetic",
+      "while loops and conditions"
+    ],
+    "statedGoals": [
+      {
+        "text": "Practice pointer assignment, swapping, arithmetic operations, and array manipulation.",
+        "page": 1
+      },
+      {
+        "text": "Use address-of and dereferencing to print and update the same integer through its name and a pointer.",
+        "page": 10
+      },
+      {
+        "text": "Explore moving through a string with pointer arithmetic and modifying an integer through a pointer parameter.",
+        "page": 11
+      }
+    ],
+    "interpretation": "The exercises gradually separate a stored address from the value at that address: one level of indirection, nine levels, two independent targets, multiple outputs, then array transformations. A copied pointer parameter can still refer to the caller's memory.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_ft",
+        "page": 12,
+        "requirements": [
+          "Submit ft_ft.c in ex0/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_ft(int *nbr);",
+          "Set the integer pointed to by nbr to 42."
+        ],
+        "concepts": [
+          "address-of (&)",
+          "pointer parameter",
+          "dereferencing (*)",
+          "caller-visible mutation"
+        ],
+        "goal": "Understand that writing through a pointer changes the original integer rather than an independent copy.",
+        "connection": "A normal int parameter receives a copy of a number. Here the function receives a copy of an address and follows it to the caller's integer.",
+        "observe": "Show the caller's integer, its address, and the function's pointer parameter. After *nbr = 42, only the pointed integer changes; the pointer keeps the same address.",
+        "suggestedSimulation": "Set a caller's integer through a pointer",
+        "simulations": [
+          "function",
+          "basic",
+          "modify"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_ultimate_ft",
+        "page": 13,
+        "requirements": [
+          "Submit ft_ultimate_ft.c in ex1/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_ultimate_ft(int *********nbr);",
+          "Follow nine pointer levels and set the final integer to 42."
+        ],
+        "concepts": [
+          "multiple indirection",
+          "pointer to pointer",
+          "type at each dereference"
+        ],
+        "goal": "Trace a chain of addresses without confusing an intermediate pointer with the final integer.",
+        "connection": "Every * repeats the single dereference learned in ft_ft. Intermediate results are still addresses until all nine levels have been followed.",
+        "observe": "Show nine address links ending in one int. Expand the chain one link at a time, then highlight only the final int changing to 42.",
+        "suggestedSimulation": "Follow a nine-pointer chain",
+        "simulations": [
+          "ultimate"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_swap",
+        "page": 14,
+        "requirements": [
+          "Submit ft_swap.c in ex2/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_swap(int *a, int *b);",
+          "Exchange the values of the two integers whose addresses are passed."
+        ],
+        "concepts": [
+          "temporary variable",
+          "copy versus overwrite",
+          "two pointer parameters"
+        ],
+        "goal": "Preserve one old value before overwriting it so both caller variables receive the correct value.",
+        "connection": "ft_ft changes one caller value. Swapping combines two such writes with a local value copy.",
+        "observe": "For 3 and 8, show tmp = 3, then the first value becoming 8, then the second becoming 3. Pointer addresses stay fixed.",
+        "suggestedSimulation": "Swap two integers with a temporary",
+        "simulations": [
+          "swap"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_div_mod",
+        "page": 15,
+        "requirements": [
+          "Submit ft_div_mod.c in ex3/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_div_mod(int a, int b, int *div, int *mod);",
+          "Store a / b in the integer pointed to by div and a % b in the integer pointed to by mod."
+        ],
+        "concepts": [
+          "integer quotient",
+          "remainder",
+          "output parameters",
+          "value inputs and address outputs"
+        ],
+        "goal": "Use pointer parameters to return two results from a void function.",
+        "connection": "Combine arithmetic from earlier modules with writing to caller variables through pointers.",
+        "observe": "Use 17 and 5. Separate copied inputs from output addresses. Highlight div changing to 3 and mod changing to 2 while original inputs remain 17 and 5.",
+        "suggestedSimulation": "Send quotient and remainder to output variables",
+        "simulations": [
+          "divmod"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_ultimate_div_mod",
+        "page": 16,
+        "requirements": [
+          "Submit ft_ultimate_div_mod.c in ex4/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_ultimate_div_mod(int *a, int *b);",
+          "Replace *a with the quotient of the original integers and *b with their remainder."
+        ],
+        "concepts": [
+          "in-place update",
+          "original inputs",
+          "temporary result",
+          "order of writes"
+        ],
+        "goal": "Calculate both answers from the original inputs before overwriting values needed by later calculations.",
+        "connection": "ft_div_mod had separate input and output storage. Here the same two locations are both inputs and outputs, so write order matters.",
+        "observe": "Show 17 and 5 before the call, keep one computed result temporarily, and finish with 3 and 2. Explain why calculating the remainder after replacing 17 with 3 would be wrong.",
+        "suggestedSimulation": "Compute before overwriting inputs",
+        "simulations": [
+          "ultdiv"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "ft_rev_int_tab",
+        "page": 17,
+        "requirements": [
+          "Submit ft_rev_int_tab.c in ex5/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_rev_int_tab(int *tab, int size);",
+          "Reverse the array in place; the first element becomes last.",
+          "Parameters are the first integer's pointer and the number of integers."
+        ],
+        "concepts": [
+          "array indexing",
+          "two indices",
+          "in-place swaps",
+          "loop stop condition"
+        ],
+        "goal": "Move inward from both ends and reverse an array without losing values or swapping the same pair twice.",
+        "connection": "Reuse ft_swap's temporary-value pattern on elements accessed through the array's first address.",
+        "observe": "Highlight the two chosen cells, the temporary, both writes, and indices moving inward. An odd-length middle element should remain untouched.",
+        "suggestedSimulation": "Reverse an array from both ends",
+        "simulations": [
+          "reverse",
+          "arithmetic"
+        ]
+      },
+      {
+        "id": "ex6",
+        "title": "ft_sort_int_tab",
+        "page": 18,
+        "requirements": [
+          "Submit ft_sort_int_tab.c in ex6/.",
+          "Authorized functions: none.",
+          "Prototype: void ft_sort_int_tab(int *tab, int size);",
+          "Sort the integer array into ascending order.",
+          "Parameters are the first integer's pointer and the number of integers."
+        ],
+        "concepts": [
+          "comparisons",
+          "conditional swapping",
+          "nested loops",
+          "sorting invariant"
+        ],
+        "goal": "Arrange values by repeatedly comparing positions and correcting their order.",
+        "connection": "Combine pointer-based array access, conditions, loops, and the swap operation.",
+        "observe": "Show comparison steps separately from actual swaps. Track which part is sorted, and include equal values and negative values in a small example.",
+        "suggestedSimulation": "Sort adjacent array elements",
+        "simulations": [
+          "sort",
+          "arithmetic"
+        ]
+      }
+    ],
+    "source": "00-c-pointers.pdf",
+    "path": "Modules\\03-memory-management\\00-c-pointers"
+  },
+  {
+    "slug": "01-c-simple-strings",
+    "group": "03-memory-management",
+    "title": "C Simple Strings",
+    "summary": "Treat a string as characters followed by a zero byte. Read each character, decide whether it belongs to a category, transform letters, count characters, and print them.",
+    "why": "String processing turns raw memory into useful text. Correctly recognizing the end of a string prevents reading or writing beyond its characters.",
+    "prerequisites": [
+      "Character codes and character literals",
+      "Pointer dereferencing",
+      "Array indexing",
+      "Conditions and loops",
+      "Functions and return values"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement basic string functions for alphabetic and numeric checks, case changes, and length calculations.",
+        "page": 1
+      }
+    ],
+    "interpretation": "These exercises practice scanning a zero-terminated sequence, reporting a property without modifying it, modifying writable characters in place, and sending bytes to standard output. Empty strings and word boundaries make the loop rules precise.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_str_is_alpha",
+        "page": 9,
+        "requirements": [
+          "Submit ft_str_is_alpha.c in ex0/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_str_is_alpha(char *str);",
+          "Return 1 for a string containing only alphabetical characters; return 0 if any other character occurs.",
+          "Return 1 for an empty string."
+        ],
+        "concepts": [
+          "character ranges",
+          "string traversal",
+          "early return",
+          "empty-string case"
+        ],
+        "goal": "Check every character and stop at the first one that violates the rule.",
+        "connection": "Pointer arithmetic from the previous lesson advances through characters; conditions classify each byte.",
+        "observe": "Highlight one character at a time, show its code and the two letter-range tests, and show the return value becoming 0 on a digit or punctuation.",
+        "suggestedSimulation": "Validate an alphabetic string",
+        "simulations": [
+          "classify-alpha"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_str_is_numeric",
+        "page": 10,
+        "requirements": [
+          "Submit ft_str_is_numeric.c in ex1/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_str_is_numeric(char *str);",
+          "Return 1 only when all characters are digits, otherwise 0.",
+          "Return 1 for an empty string."
+        ],
+        "concepts": [
+          "digit characters",
+          "range test",
+          "early return"
+        ],
+        "goal": "Distinguish a text digit such as '7' from the numeric integer 7 and recognize only digit characters.",
+        "connection": "Reuse alphabetic validation's traversal but change the accepted character range.",
+        "observe": "Show '0' through '9' passing, a sign or space failing, and the zero terminator ending the loop without being tested as a digit.",
+        "suggestedSimulation": "Validate digit characters",
+        "simulations": [
+          "classify-numeric"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_str_is_lowercase",
+        "page": 11,
+        "requirements": [
+          "Submit ft_str_is_lowercase.c in ex2/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_str_is_lowercase(char *str);",
+          "Return 1 only for lowercase alphabetical characters, otherwise 0.",
+          "Return 1 for an empty string."
+        ],
+        "concepts": [
+          "lowercase range",
+          "boolean result",
+          "string terminator"
+        ],
+        "goal": "Apply a more specific character rule while leaving the original string unchanged.",
+        "connection": "Narrow the alphabetical test to lowercase letters.",
+        "observe": "Show lowercase letters passing and an uppercase letter or digit causing an early 0 return.",
+        "suggestedSimulation": "Validate lowercase letters",
+        "simulations": [
+          "classify-lowercase"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_str_is_uppercase",
+        "page": 12,
+        "requirements": [
+          "Submit ft_str_is_uppercase.c in ex3/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_str_is_uppercase(char *str);",
+          "Return 1 only for uppercase alphabetical characters, otherwise 0.",
+          "Return 1 for an empty string."
+        ],
+        "concepts": [
+          "uppercase range",
+          "boolean result",
+          "read-only traversal"
+        ],
+        "goal": "Check a string property without accidentally modifying the inspected characters.",
+        "connection": "Mirror the lowercase predicate with the uppercase range.",
+        "observe": "Show 'A' and 'Z' passing, lowercase letters failing, and no memory contents changing during validation.",
+        "suggestedSimulation": "Validate uppercase letters",
+        "simulations": [
+          "classify-uppercase"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_str_is_printable",
+        "page": 13,
+        "requirements": [
+          "Submit ft_str_is_printable.c in ex4/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_str_is_printable(char *str);",
+          "Return 1 only when all characters are printable, otherwise 0.",
+          "Return 1 for an empty string."
+        ],
+        "concepts": [
+          "visible and control characters",
+          "ASCII ranges",
+          "escaped representation"
+        ],
+        "goal": "Recognize that a stored character can be a control byte rather than a visible letter or symbol.",
+        "connection": "Extend character-range validation beyond letters and digits.",
+        "observe": "Display a newline as an escaped byte, distinguish space from newline, and explain why control characters fail a printable-ASCII example.",
+        "suggestedSimulation": "Inspect printable and control bytes",
+        "simulations": [
+          "classify-printable"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "ft_strupcase",
+        "page": 14,
+        "requirements": [
+          "Submit ft_strupcase.c in ex5/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strupcase(char *str);",
+          "Transform letters to uppercase and return str."
+        ],
+        "concepts": [
+          "writable character array",
+          "ASCII case relationship",
+          "in-place mutation",
+          "returning an existing pointer"
+        ],
+        "goal": "Modify selected characters through the string's address and return the original starting address.",
+        "connection": "Combine validation's letter test with pointer-based assignment.",
+        "observe": "Use a writable array, highlight each lowercase byte before and after conversion, and show digits and punctuation unchanged. The returned pointer must still identify the first character.",
+        "suggestedSimulation": "Uppercase a writable string",
+        "simulations": [
+          "upcase"
+        ]
+      },
+      {
+        "id": "ex6",
+        "title": "ft_strlowcase",
+        "page": 15,
+        "requirements": [
+          "Submit ft_strlowcase.c in ex6/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strlowcase(char *str);",
+          "Transform letters to lowercase and return str."
+        ],
+        "concepts": [
+          "case conversion",
+          "in-place character update",
+          "unchanged nonletters"
+        ],
+        "goal": "Use a condition to write only the uppercase letters that need conversion.",
+        "connection": "Reverse the uppercase conversion while keeping the same traversal and pointer identity.",
+        "observe": "Show uppercase bytes becoming lowercase and all other bytes staying the same, including the zero terminator.",
+        "suggestedSimulation": "Lowercase a writable string",
+        "simulations": [
+          "lowcase"
+        ]
+      },
+      {
+        "id": "ex7",
+        "title": "ft_strcapitalize",
+        "page": 16,
+        "requirements": [
+          "Submit ft_strcapitalize.c in ex7/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strcapitalize(char *str);",
+          "Capitalize the first letter of each word and lowercase the remaining letters.",
+          "A word is a sequence of alphanumeric characters.",
+          "Return str.",
+          "The example leaves 42words beginning with a digit and capitalizes words separated by hyphens, plus signs, or punctuation."
+        ],
+        "concepts": [
+          "word boundaries",
+          "state flag",
+          "alphanumeric classification",
+          "case normalization"
+        ],
+        "goal": "Remember whether the next alphanumeric character begins a word and apply the correct letter transformation.",
+        "connection": "Build a small state machine from alphabetic/numeric tests and case conversion.",
+        "observe": "Show a new-word flag changing at separators. Use '42WORDS hi+THERE' so the digit starts the first word and W becomes lowercase rather than uppercase.",
+        "suggestedSimulation": "Track word starts while capitalizing",
+        "simulations": [
+          "capitalize",
+          "upcase",
+          "lowcase"
+        ]
+      },
+      {
+        "id": "ex8",
+        "title": "ft_strlen",
+        "page": 17,
+        "requirements": [
+          "Submit ft_strlen.c in ex8/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_strlen(char *str);",
+          "Count and return the number of characters in a string."
+        ],
+        "concepts": [
+          "zero terminator",
+          "counter",
+          "length versus allocated storage"
+        ],
+        "goal": "Count characters before the terminator without counting the terminator itself.",
+        "connection": "Reuse the character traversal without any validation or memory writes.",
+        "observe": "For 'cat', show four stored bytes but a length of three, and show an empty string returning zero.",
+        "suggestedSimulation": "Count characters until zero",
+        "simulations": [
+          "strlen"
+        ]
+      },
+      {
+        "id": "ex9",
+        "title": "ft_putstr",
+        "page": 18,
+        "requirements": [
+          "Submit ft_putstr.c in ex9/.",
+          "Authorized functions: write.",
+          "Prototype: void ft_putstr(char *str);",
+          "Display the string on standard output."
+        ],
+        "concepts": [
+          "standard output",
+          "byte address",
+          "write count",
+          "output versus memory"
+        ],
+        "goal": "Send characters to the terminal while leaving the string's stored bytes unchanged.",
+        "connection": "Combine string traversal with the write-based output used in earlier character exercises.",
+        "observe": "Highlight the source byte passed to write and append the character to terminal output. Explain that '\\0' stops traversal and is not printed.",
+        "suggestedSimulation": "Print a string one byte at a time",
+        "simulations": [
+          "putstr",
+          "string"
+        ]
+      },
+      {
+        "id": "ex10",
+        "title": "ft_putstr_non_printable",
+        "page": 19,
+        "requirements": [
+          "Submit ft_putstr_non_printable.c in ex10/.",
+          "Authorized functions: write.",
+          "Prototype: void ft_putstr_non_printable(char *str);",
+          "Print printable characters normally.",
+          "Print nonprintable characters as lowercase hexadecimal preceded by a backslash; the example turns newline into \\0a."
+        ],
+        "concepts": [
+          "byte representation",
+          "hexadecimal digits",
+          "division and remainder",
+          "unsigned byte value"
+        ],
+        "goal": "Represent invisible bytes as readable text without changing the original string.",
+        "connection": "Combine printable-character tests, arithmetic quotient/remainder, and terminal output.",
+        "observe": "Show a newline's value 10, hexadecimal digits 0 and a, and the three emitted characters '\\', '0', 'a'. Treat high bytes as unsigned values in the teaching example.",
+        "suggestedSimulation": "Render a control byte in hexadecimal",
+        "simulations": [
+          "nonprintable",
+          "hexdump"
+        ]
+      }
+    ],
+    "source": "01-c-simple-strings.pdf",
+    "path": "Modules\\03-memory-management\\01-c-simple-strings"
+  },
+  {
+    "slug": "02-c-memory-management",
+    "group": "03-memory-management",
+    "title": "C Memory Management",
+    "summary": "Request storage at runtime, fill it, and return its address. Allocate arrays and strings, expose a new pointer through a pointer-to-pointer, and build collections of strings.",
+    "why": "A function often cannot know the required size until it sees its inputs. Dynamic allocation lets results outlive the function, but the caller must understand ownership and eventual cleanup.",
+    "prerequisites": [
+      "Pointer parameters",
+      "Pointer-to-pointer chains",
+      "String length and terminators",
+      "Integer arrays",
+      "Character copying",
+      "Integer base arithmetic"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement dynamic memory management functions, including allocation, string operations, and base conversion.",
+        "page": 1
+      }
+    ],
+    "interpretation": "The sequence develops allocation sizing, independent copies, half-open ranges, output pointer ownership, combined result buffers, and nested allocations. Knowing how much memory exists and who must release it is the central skill.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_strdup",
+        "page": 10,
+        "requirements": [
+          "Submit ft_strdup.c in ex0/.",
+          "Authorized functions: malloc.",
+          "Prototype: char *ft_strdup(char *src);",
+          "Reproduce strdup behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "malloc",
+          "independent string copy",
+          "length plus terminator",
+          "returned allocated pointer"
+        ],
+        "goal": "Allocate a separate writable string rather than merely copying the source address.",
+        "connection": "String counting determines the needed storage and character copying fills it; pointers identify the new buffer.",
+        "observe": "Show source and destination at different addresses, allocate strlen(src)+1 bytes, copy each character and '\\0', and show changing the clone does not change the source.",
+        "suggestedSimulation": "Allocate and duplicate a string",
+        "simulations": [
+          "strdup",
+          "allocation"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_range",
+        "page": 11,
+        "requirements": [
+          "Submit ft_range.c in ex1/.",
+          "Authorized functions: malloc.",
+          "Prototype: int *ft_range(int min, int max);",
+          "Return an allocated integer array covering min inclusive to max exclusive.",
+          "Return a null pointer when min is greater than or equal to max."
+        ],
+        "concepts": [
+          "half-open interval",
+          "element count",
+          "sizeof",
+          "heap array",
+          "NULL result"
+        ],
+        "goal": "Calculate a required count from inputs and allocate enough bytes for that many integers.",
+        "connection": "Array access and pointer arithmetic remain the same; the array's storage now comes from an allocation.",
+        "observe": "For min=2 and max=5, show a count of 3, storage for three ints, then values 2, 3, 4. Separately show the invalid-range path returning NULL.",
+        "suggestedSimulation": "Allocate an integer range",
+        "simulations": [
+          "allocation",
+          "arithmetic"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_ultimate_range",
+        "page": 12,
+        "requirements": [
+          "Submit ft_ultimate_range.c in ex2/.",
+          "Authorized functions: malloc.",
+          "Prototype: int ft_ultimate_range(int **range, int min, int max);",
+          "Allocate and assign an array for min inclusive to max exclusive.",
+          "Return its element count, or -1 on error.",
+          "When min is greater than or equal to max, set the caller's range pointer to NULL and return 0."
+        ],
+        "concepts": [
+          "pointer output parameter",
+          "int **",
+          "allocation result",
+          "status versus data"
+        ],
+        "goal": "Change a caller's pointer through its address while returning an independent count or error status.",
+        "connection": "ft_div_mod wrote to caller integers; this exercise writes an allocated address to a caller pointer.",
+        "observe": "Show range pointing to the caller's int* variable. After allocation, *range stores the heap address; the function return carries only the count. Keep allocation failure and an empty range visibly distinct.",
+        "suggestedSimulation": "Return an allocated array through int **",
+        "simulations": [
+          "pointer-output",
+          "allocation"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_strjoin",
+        "page": 13,
+        "requirements": [
+          "Submit ft_strjoin.c in ex3/.",
+          "Authorized functions: malloc.",
+          "Prototype: char *ft_strjoin(int size, char **strs, char *sep);",
+          "Concatenate size strings, placing sep between successive strings.",
+          "When size is 0, return an empty string that can be freed."
+        ],
+        "concepts": [
+          "array of string pointers",
+          "total capacity",
+          "separator placement",
+          "allocated empty string"
+        ],
+        "goal": "Plan one result buffer large enough for several input strings and separators.",
+        "connection": "Combine string lengths, string copies, and the pointer arrays needed for multiple text values.",
+        "observe": "For ['red','blue'] and '/', show 3+1+4+1 bytes, source pointers staying fixed, destination filling with 'red/blue\\0', and no trailing separator. A size-zero result still has one allocated zero byte.",
+        "suggestedSimulation": "Join strings into one allocation",
+        "simulations": [
+          "strcat",
+          "allocation",
+          "strdup"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_convert_base",
+        "page": 14,
+        "requirements": [
+          "Submit ft_convert_base.c and ft_convert_base2.c in ex4/.",
+          "Authorized functions: malloc, free.",
+          "Prototype: char *ft_convert_base(char *nbr, char *base_from, char *base_to);",
+          "Convert the numeric string from the source symbol alphabet to the destination symbol alphabet.",
+          "nbr and both base strings may be non-writable; do not modify them.",
+          "The represented number must fit in an int.",
+          "Return NULL for an invalid base: empty or one-character base, duplicate symbols, or '+', '-', or whitespace in the symbols.",
+          "Prefix the result only with a single '-' when needed, with no whitespace or '+'.",
+          "The prototype continues on PDF page 15."
+        ],
+        "concepts": [
+          "base alphabet",
+          "symbol-to-value mapping",
+          "multiply-and-add",
+          "remainder digits",
+          "validation",
+          "allocated representation"
+        ],
+        "goal": "Separate a number's value from the symbols used to write it and construct a new representation without altering the inputs.",
+        "connection": "Build on digit parsing and quotient/remainder arithmetic, then apply dynamic allocation to the resulting string.",
+        "observe": "Convert binary '101' to decimal '5': show accumulated values 1, 2, 5 and output digits. Include invalid duplicate-symbol and one-symbol bases. Show the sign separate from magnitude.",
+        "suggestedSimulation": "Convert a number between symbol alphabets",
+        "simulations": [
+          "base-conversion",
+          "atoi"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "ft_split",
+        "page": 16,
+        "requirements": [
+          "Submit ft_split.c in ex5/.",
+          "Authorized functions: malloc.",
+          "Prototype: char **ft_split(char *str, char *charset);",
+          "Treat each character in charset as a separator.",
+          "Return an array of addresses of the substrings between separators.",
+          "The final pointer-array element must be 0.",
+          "Do not include empty strings in the result.",
+          "The input string may not be modified."
+        ],
+        "concepts": [
+          "token boundaries",
+          "multiple separators",
+          "nested allocations",
+          "char **",
+          "NULL sentinel"
+        ],
+        "goal": "Build an array of independently stored words while skipping runs of separators.",
+        "connection": "Use string traversal to find word ranges, allocation to copy them, and pointer-to-pointer indexing to collect their addresses.",
+        "observe": "For ',red,,blue;' and ',;', show skipped separators, two allocated words with their own zero bytes, and a three-slot pointer array ending in NULL. Distinguish the pointer-array terminator from each string's byte terminator.",
+        "suggestedSimulation": "Split text into an allocated string array",
+        "simulations": [
+          "split",
+          "allocation"
+        ]
+      }
+    ],
+    "source": "02-c-memory-management.pdf",
+    "path": "Modules\\03-memory-management\\02-c-memory-management"
+  },
+  {
+    "slug": "03-c-strings",
+    "group": "03-memory-management",
+    "title": "C Strings",
+    "summary": "Copy, compare, append, and search strings by inspecting or transferring their bytes. Parse numeric text using whitespace, sign, and digit rules.",
+    "why": "These operations are the building blocks of text processing. They make buffer capacity, string termination, byte comparison, and parser stopping conditions concrete.",
+    "prerequisites": [
+      "Zero-terminated strings",
+      "Pointer parameters",
+      "String length",
+      "Character codes",
+      "Loop conditions",
+      "Integer arithmetic"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement fundamental string functions, including validation, transformation, and concatenation operations.",
+        "page": 1
+      }
+    ],
+    "interpretation": "The actual exercises focus on copying, bounded copying, comparison, bounded comparison, appending, searching, and integer parsing. The module summary is broader than this exercise list. Learn each operation's distinct return and termination contract rather than treating every string loop as identical.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_strcpy",
+        "page": 10,
+        "requirements": [
+          "Submit ft_strcpy.c in ex0/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strcpy(char *dest, char *src);",
+          "Reproduce strcpy behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "source and destination buffers",
+          "byte copying",
+          "terminator copying",
+          "return pointer identity"
+        ],
+        "goal": "Transfer a complete string into existing writable storage while preserving the source.",
+        "connection": "Use the same traversal as strlen, now writing each inspected character to another array.",
+        "observe": "Show distinct source and destination addresses, each copied byte, the final copied '\\0', and the returned starting destination address. Make destination capacity visible.",
+        "suggestedSimulation": "Copy a complete string",
+        "simulations": [
+          "strcpy"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_strncpy",
+        "page": 11,
+        "requirements": [
+          "Submit ft_strncpy.c in ex1/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strncpy(char *dest, char *src, unsigned int n);",
+          "Reproduce strncpy behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "bounded copying",
+          "zero padding",
+          "possibly unterminated destination",
+          "n=0"
+        ],
+        "goal": "Understand that an exact byte limit changes the termination behavior compared with strcpy.",
+        "connection": "Add a count limit to copying and distinguish storage padding from a complete copied string.",
+        "observe": "Show a short source zero-padded up to n and a long source copied for n bytes without an added terminator. Do not print the latter as a C string; inspect the bytes directly.",
+        "suggestedSimulation": "Compare padded and truncated bounded copies",
+        "simulations": [
+          "strncpy-pad",
+          "strncpy-truncate"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_strcmp",
+        "page": 12,
+        "requirements": [
+          "Submit ft_strcmp.c in ex2/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_strcmp(char *s1, char *s2);",
+          "Reproduce strcmp behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "lexicographic byte order",
+          "first difference",
+          "unsigned character comparison",
+          "return sign"
+        ],
+        "goal": "Determine order using the first differing byte rather than string length or a comparison of addresses.",
+        "connection": "Scan two strings together using the character codes already used for classification.",
+        "observe": "For 'cat' and 'car', show c=c, a=a, then t versus r determining a positive result. Include an equal-string case and a prefix ending in '\\0'.",
+        "suggestedSimulation": "Compare strings at the first differing byte",
+        "simulations": [
+          "strcmp"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_strncmp",
+        "page": 13,
+        "requirements": [
+          "Submit ft_strncmp.c in ex3/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_strncmp(char *s1, char *s2, unsigned int n);",
+          "Reproduce strncmp behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "comparison limit",
+          "early mismatch",
+          "zero-length comparison",
+          "termination"
+        ],
+        "goal": "Compare only the allowed prefix and stop safely at the limit or a terminator.",
+        "connection": "Add a bound to strcmp, similar to adding a bound to copying but without padding or writes.",
+        "observe": "Show 'cat' and 'car' comparing equal for n=2 but differing for n=3. A zero limit should return zero without reading character cells.",
+        "suggestedSimulation": "Compare a bounded string prefix",
+        "simulations": [
+          "strcmp",
+          "strncpy-truncate"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_strcat",
+        "page": 14,
+        "requirements": [
+          "Submit ft_strcat.c in ex4/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strcat(char *dest, char *src);",
+          "Reproduce strcat behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "append position",
+          "replacing a terminator",
+          "destination capacity",
+          "returned destination pointer"
+        ],
+        "goal": "Append after an existing string instead of overwriting its beginning.",
+        "connection": "First locate the terminator with a strlen-like scan, then copy using a strcpy-like scan.",
+        "observe": "For 'hi' plus '!', highlight finding the old terminator, replacing it with '!', adding a new terminator, and leaving the returned pointer at the original start.",
+        "suggestedSimulation": "Append a string at the old terminator",
+        "simulations": [
+          "strcat"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "ft_strncat",
+        "page": 15,
+        "requirements": [
+          "Submit ft_strncat.c in ex5/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strncat(char *dest, char *src, unsigned int nb);",
+          "Reproduce strncat behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "bounded append",
+          "source-character limit",
+          "final terminator",
+          "capacity versus limit"
+        ],
+        "goal": "Separate a limit on characters appended from the destination's total buffer capacity.",
+        "connection": "Combine strcat's append position with a bounded source traversal.",
+        "observe": "For 'hi' plus 'there' with nb=2, show 'hith\\0'. Explain the limit controls appended characters and the destination still needs room for the old text plus those characters and a final zero byte.",
+        "suggestedSimulation": "Append a limited number of characters",
+        "simulations": [
+          "strcat",
+          "strncpy-truncate"
+        ]
+      },
+      {
+        "id": "ex6",
+        "title": "ft_strstr",
+        "page": 16,
+        "requirements": [
+          "Submit ft_strstr.c in ex6/.",
+          "Authorized functions: none.",
+          "Prototype: char *ft_strstr(char *str, char *to_find);",
+          "Reproduce strstr behavior as specified by its manual page."
+        ],
+        "concepts": [
+          "candidate start",
+          "nested comparisons",
+          "pointer into existing text",
+          "NULL for no match"
+        ],
+        "goal": "Search for a sequence and return the location of its first occurrence without allocating or copying it.",
+        "connection": "Reuse pairwise character comparison at several candidate offsets in one source string.",
+        "observe": "Show failed candidate positions before a match, then a returned pointer into the original string. Include the empty-needle result pointing to the original start and a no-match NULL result.",
+        "suggestedSimulation": "Find a substring and return its address",
+        "simulations": [
+          "strstr"
+        ]
+      },
+      {
+        "id": "ex7",
+        "title": "ft_atoi",
+        "page": 17,
+        "requirements": [
+          "Submit ft_atoi.c in ex7/.",
+          "Authorized functions: none.",
+          "Prototype: int ft_atoi(char *str);",
+          "Convert the initial numeric portion of the string to an integer.",
+          "Skip any initial whitespace recognized by isspace(3).",
+          "Accept any sequence of '+' and '-' signs; an odd number of '-' signs makes the result negative.",
+          "Read digits until the first non-digit, then return the value accumulated so far.",
+          "Overflow and underflow handling are not required; results may be undefined in those cases."
+        ],
+        "concepts": [
+          "parser phases",
+          "sign parity",
+          "digit-to-value conversion",
+          "multiply-and-add",
+          "stopping rule"
+        ],
+        "goal": "Build an integer from text while keeping whitespace, signs, and digits as distinct parsing stages.",
+        "connection": "Combine character classification, string scanning, and arithmetic. This exercise accepts multiple signs, unlike many ordinary atoi descriptions.",
+        "observe": "Use ASCII input '  --+42x7': show skipped spaces, sign flipping twice back to positive, accumulation 0→4→42, and stopping at x so the later 7 is ignored. Show no-digit input returning zero.",
+        "suggestedSimulation": "Parse whitespace, signs, and decimal digits",
+        "simulations": [
+          "atoi"
+        ]
+      }
+    ],
+    "source": "03-c-strings.pdf",
+    "path": "Modules\\03-memory-management\\03-c-strings"
+  },
+  {
+    "slug": "04-c-system-interface",
+    "group": "03-memory-management",
+    "title": "C System Interface: Program Arguments",
+    "summary": "Receive arguments in main through argc and argv. Print the program name, visit the supplied argument strings in different orders, and sort them by character codes.",
+    "why": "Command-line arguments let one compiled program work with different inputs. argv connects shell input with arrays, strings, and multiple levels of pointers.",
+    "prerequisites": [
+      "main function",
+      "String output",
+      "Arrays of pointers",
+      "String comparison",
+      "Sorting and swapping"
+    ],
+    "statedGoals": [
+      {
+        "text": "Develop programs using system arguments and command-line interfaces, manipulating program parameters dynamically.",
+        "page": 1
+      }
+    ],
+    "interpretation": "The numbered exercises specifically teach argc and argv rather than file descriptors or broader system calls. Learn which slot is the program name, where user arguments begin, how bounds are derived from argc, and how pointer swapping can reorder text without rewriting it.",
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_print_program_name",
+        "page": 9,
+        "requirements": [
+          "Submit ft_print_program_name.c in ex0/.",
+          "Authorized functions: write.",
+          "This is a complete program, so include main.",
+          "Print the program's own name followed by a newline."
+        ],
+        "concepts": [
+          "argc",
+          "argv[0]",
+          "char **argv",
+          "program startup",
+          "newline output"
+        ],
+        "goal": "Understand how main receives the invocation name as the first argument string.",
+        "connection": "The shell starts the compiled program; main receives a pointer array whose entries point to strings like those studied earlier.",
+        "observe": "Show './demo red' becoming argc=2 and argv entries './demo', 'red', NULL. Follow argv[0] to its characters and output only './demo\\n'.",
+        "suggestedSimulation": "Inspect main's argument array",
+        "simulations": [
+          "argv"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_print_params",
+        "page": 10,
+        "requirements": [
+          "Submit ft_print_params.c in ex1/.",
+          "Authorized functions: write.",
+          "This is a complete program, so include main.",
+          "Print all given arguments except argv[0], one per line, in command-line order."
+        ],
+        "concepts": [
+          "outer and inner loops",
+          "argument bounds",
+          "argument string",
+          "standard output"
+        ],
+        "goal": "Traverse the argument array and, for each pointer, traverse the referenced string.",
+        "connection": "Nest string printing inside an array traversal, starting at index 1 rather than 0.",
+        "observe": "Highlight the argv slot and each character independently. Show argv[0] excluded, each newline appended, and no user arguments producing no output.",
+        "suggestedSimulation": "Print arguments in input order",
+        "simulations": [
+          "argv"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_rev_params",
+        "page": 11,
+        "requirements": [
+          "Submit ft_rev_params.c in ex2/.",
+          "Authorized functions: write.",
+          "This is a complete program, so include main.",
+          "Print all given arguments except argv[0], one per line, in reverse command-line order."
+        ],
+        "concepts": [
+          "reverse traversal",
+          "argc minus one",
+          "argument order versus character order"
+        ],
+        "goal": "Visit argument slots backward while printing the characters within each string forward.",
+        "connection": "Change only the array traversal direction from ft_print_params; the string-output operation stays the same.",
+        "observe": "For './demo red blue', show the index moving 2→1 and output 'blue\\nred\\n'. The letters inside each argument are not reversed and the argv contents do not change.",
+        "suggestedSimulation": "Visit argument pointers backward",
+        "simulations": [
+          "argv-reverse"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_sort_params",
+        "page": 12,
+        "requirements": [
+          "Submit ft_sort_params.c in ex3/.",
+          "Authorized functions: write.",
+          "This is a complete program, so include main.",
+          "Print all given arguments except argv[0], sorted in ASCII order, one argument per line."
+        ],
+        "concepts": [
+          "string comparison",
+          "pointer swapping",
+          "ASCII order",
+          "array sorting"
+        ],
+        "goal": "Combine text comparison with array sorting while preserving each argument's characters.",
+        "connection": "Use strcmp-like logic to decide order and the pointer module's swap pattern to exchange argv entries.",
+        "observe": "Show pointers for 'blue', 'Red', and 'apple' changing slots while their character buffers stay in place. Highlight that uppercase R precedes lowercase a in ASCII order; exclude argv[0] from sorting and output.",
+        "suggestedSimulation": "Sort argument pointers by text",
+        "simulations": [
+          "argv-sort",
+          "argv"
+        ]
+      }
+    ],
+    "source": "04-c-system-interface.pdf",
+    "path": "Modules\\03-memory-management\\04-c-system-interface"
+  },
+  {
+    "slug": "00-c-function-pointers",
+    "group": "04-data-structures",
+    "title": "C-Function-Pointers",
+    "summary": "Give a function to another function so that the same loop can perform different actions, transform values, test conditions, or compare elements.",
+    "why": "Separating the traversal from the action lets you reuse one algorithm with several behaviors. It also teaches the difference between data addresses and callable function addresses.",
+    "prerequisites": [
+      "Function declarations and return values",
+      "Pointers and arrays",
+      "Array bounds and loops",
+      "Null-terminated arrays of pointers",
+      "malloc for a new result array"
+    ],
+    "statedGoals": [
+      {
+        "text": "Use function pointers to process arrays and evaluate sorting; the cover also mentions a basic calculator.",
+        "page": 1
+      }
+    ],
+    "interpretation": "The actual exercises develop callbacks: apply an action, collect returned values, evaluate a predicate, count matches, and check order through a comparison function. A callback parameter receives a copied function address, and f(tab[i]) passes an integer value rather than the address of the array element.",
+    "sourceNotes": [
+      {
+        "page": 1,
+        "text": "The summary mentions a basic calculator, but the contents and complete exercise pages contain only ex0 through ex4. No calculator exercise is present; do not invent an assignment."
+      },
+      {
+        "page": 4,
+        "text": "General submission rules require cc with -Wall -Wextra -Werror, the Norm, only requested files, and a main only when a program is requested."
+      }
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_foreach",
+        "page": 10,
+        "requirements": [
+          "Submit ex0/ft_foreach.c; authorized functions: None.",
+          "Prototype: void ft_foreach(int *tab, int length, void(*f)(int));",
+          "Apply f to every integer element in array order.",
+          "The example passes &ft_putnbr as the callback to display the integers."
+        ],
+        "concepts": [
+          "Function pointers",
+          "Callbacks",
+          "Array traversal",
+          "Passing an int by value"
+        ],
+        "goal": "Understand that the loop chooses which element to visit while f chooses what to do with that element's copied value.",
+        "connection": "You already passed data to functions. Now pass the address of a function and call it during the traversal.",
+        "observe": "Watch f point to the selected function, i choose an array cell, and the callback receive a new int parameter. A callback that changes its own int parameter does not change tab[i]. Show any terminal text only when the callback actually writes it.",
+        "suggestedSimulation": "Callback traversal and copied parameters",
+        "simulations": [
+          "callback",
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_map",
+        "page": 11,
+        "requirements": [
+          "Submit ex1/ft_map.c; authorized function: malloc.",
+          "Prototype: int *ft_map(int *tab, int length, int(*f)(int));",
+          "Apply f to each input integer in order and return an array containing all callback return values."
+        ],
+        "concepts": [
+          "Function pointers with return values",
+          "Dynamically allocated result arrays",
+          "Mapping",
+          "Separate input and output storage"
+        ],
+        "goal": "Trace how one input value is copied into a callback, transformed, returned, and stored in a different array.",
+        "connection": "Build on ft_foreach by collecting the result of each function call instead of discarding it; reuse malloc and array indexing.",
+        "observe": "Show the original array beside the allocated result array. Highlight the copied callback argument, its return value, and the single destination cell updated at each step. Handle allocation failure in the teaching example and show who must later free the result.",
+        "suggestedSimulation": "Map values into a new array",
+        "simulations": [
+          "callback",
+          "allocation"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_any",
+        "page": 12,
+        "requirements": [
+          "Submit ex2/ft_any.c; authorized functions: None.",
+          "Prototype: int ft_any(char **tab, int(*f)(char*));",
+          "The array ends with a null pointer.",
+          "Visit elements in array order. Return 1 if at least one call to f returns a nonzero value; otherwise return 0."
+        ],
+        "concepts": [
+          "Predicate callbacks",
+          "char **",
+          "Null pointer sentinel",
+          "Nonzero means true",
+          "Early return"
+        ],
+        "goal": "Understand the question 'Does any element match?' and distinguish the final null pointer from the '\\0' character inside each string.",
+        "connection": "Combine arrays of string pointers with callback return values and an if condition. The callback receives a copied string address, allowing it to inspect the same character storage.",
+        "observe": "Show each tab[i] address being copied to the callback parameter, the predicate result, and the overall return value. Demonstrate a successful match and a no-match run that reaches the pointer sentinel. Early stopping after a match is a useful implementation choice, not an extra stated requirement.",
+        "suggestedSimulation": "Find any matching string",
+        "simulations": [
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_count_if",
+        "page": 13,
+        "requirements": [
+          "Submit ex3/ft_count_if.c; authorized functions: None.",
+          "Prototype: int ft_count_if(char **tab, int length, int(*f)(char*));",
+          "Apply f to the supplied number of elements in array order and return the count of nonzero callback results."
+        ],
+        "concepts": [
+          "Predicate callbacks",
+          "Explicit length",
+          "Counting matches",
+          "Accumulation"
+        ],
+        "goal": "Count how many strings satisfy a condition without confusing the number of visited elements with the number of matches.",
+        "connection": "Extend ft_any by continuing through the entire length and keeping a counter. Unlike ft_any, this exercise supplies a length rather than specifying a null pointer delimiter.",
+        "observe": "Watch i advance for every element while count advances only on a nonzero predicate result. Keep the array addresses, callback parameter, and return value visible.",
+        "suggestedSimulation": "Count matching strings",
+        "simulations": [
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_is_sort",
+        "page": 14,
+        "requirements": [
+          "Submit ex4/ft_is_sort.c; authorized functions: None.",
+          "Prototype: int ft_is_sort(int *tab, int length, int(*f)(int, int));",
+          "Return 1 for an array sorted in ascending or descending order; return 0 otherwise.",
+          "The comparator returns a negative value when its first argument is lower, 0 for equality, and a positive value otherwise.",
+          "Equal comparisons never break order and do not establish ascending or descending direction. An all-equal array is sorted."
+        ],
+        "concepts": [
+          "Comparison callbacks",
+          "Adjacent pairs",
+          "Sign of a return value",
+          "Direction tracking",
+          "Equal values"
+        ],
+        "goal": "Use the sign of comparisons to check consistency of order, including ties, rather than assuming a comparator only returns -1, 0, or 1.",
+        "connection": "Reuse array traversal and sorting comparisons, but let a separate function define how two values are compared.",
+        "observe": "Highlight the two compared cells, the copied callback arguments, the returned sign, and any established direction. Use an example such as [2, 2, 5, 4] to show that an equal pair is neutral before a later direction change proves the array unsorted.",
+        "suggestedSimulation": "Check sorting with a comparator",
+        "simulations": [
+          "predicate",
+          "sort",
+          "argv-sort"
+        ]
+      }
+    ],
+    "source": "00-c-function-pointers.pdf",
+    "path": "Modules\\04-data-structures\\00-c-function-pointers"
+  },
+  {
+    "slug": "01-c-structures",
+    "group": "04-data-structures",
+    "title": "C-Structures",
+    "summary": "Group related values in a struct, access its members directly or through a pointer, and build an allocated array of records from strings.",
+    "why": "Real programs need to keep different kinds of information together. Structures let you describe a record once and create many independent records with that shape.",
+    "prerequisites": [
+      "Arrays and loops",
+      "Strings and length",
+      "Pointers and pointer parameters",
+      "malloc and free",
+      "Function prototypes and headers"
+    ],
+    "statedGoals": [
+      {
+        "text": "Use fundamental C structures and memory management to store and manipulate data.",
+        "page": 1
+      },
+      {
+        "text": "Move from simple types to arrays and then structures.",
+        "page": 9
+      },
+      {
+        "text": "Use structures to group members of different types, define the type first, and then create variables of that type.",
+        "page": 11
+      }
+    ],
+    "interpretation": "The module connects the layout of arrays with compound records, then combines borrowed string pointers, owned string copies, dynamic allocation, sentinel termination, and output. A type definition describes a shape; a variable declaration creates an object of that shape.",
+    "sourceNotes": [
+      {
+        "page": 9,
+        "text": "The tutorial's automatic array without an initializer has indeterminate values. Do not execute the later example that reads an uninitialized element; teach initialization before reads. Static-duration objects have different initialization rules."
+      },
+      {
+        "page": 13,
+        "text": "ft_point.h is specified through the supplied main: t_point must expose x and y assignable from integers. The subject does not explicitly print the typedef or mandate exact member types; an int-based point is the natural teaching interpretation."
+      }
+    ],
+    "exercises": [
+      {
+        "id": "tutorial-arrays",
+        "title": "Tutorial: Arrays",
+        "page": 9,
+        "requirements": [
+          "Tutorial practice, not a numbered submission exercise; continues on PDF page 10.",
+          "Create an array of five integers and fill it with 0, 1, 2, 3, 4 using a loop; print its elements.",
+          "Print that array from its last element to its first using a backward loop.",
+          "Create an array of three long integers and a pointer to long; fill the array using the pointer rather than the array name, and print the results.",
+          "Write one function that fills an integer array and another that displays it; pass the array to both and test from main."
+        ],
+        "concepts": [
+          "Contiguous storage",
+          "Zero-based indexing",
+          "Array bounds",
+          "Element initialization",
+          "Forward and backward traversal",
+          "Typed pointer arithmetic",
+          "Array parameters"
+        ],
+        "goal": "See an array as several neighboring objects of one type and learn to visit or update each object safely.",
+        "connection": "Apply loops to indexed storage and reuse pointers to access array elements. String literals are arrays of characters with a final null character.",
+        "observe": "Display each element and its illustrative address, mark uninitialized cells until assigned, and highlight the current index or pointer. Explain that a pointer increment advances to the next element of its type; show the passed array address shared by caller and function.",
+        "suggestedSimulation": "Array initialization and traversal",
+        "simulations": [
+          "arithmetic",
+          "structure"
+        ]
+      },
+      {
+        "id": "tutorial-structures",
+        "title": "Tutorial: Structures",
+        "page": 11,
+        "requirements": [
+          "Tutorial practice, not a numbered submission exercise; continues on PDF page 12.",
+          "Define struct s_learner outside functions with int age, char grade, and long id; create a learner variable, fill its members, and print them.",
+          "Create two variables of that struct type with different member values and verify that they are independent.",
+          "Create an array of three such structures and print each index, age, grade, and id.",
+          "Create a pointer to a struct, assign it a struct address, and access members with ->.",
+          "Explore arrays in structs, nested structs, and pointers to the same struct type."
+        ],
+        "concepts": [
+          "Struct type definition",
+          "Member access with .",
+          "Independent objects",
+          "Arrays of structs",
+          "Pointer member access with ->",
+          "Nested records"
+        ],
+        "goal": "Distinguish the record's type from actual record objects, then connect direct member access with access through a record address.",
+        "connection": "Build on homogeneous arrays by grouping different member types. Pointer dereferencing still finds the original object; -> then selects a member within it.",
+        "observe": "Show the type declaration as a shape without runtime storage. Once variables are declared, show separate learner objects and highlight only the member changed. Connect ptr->age to the same member as (*ptr).age without pretending every member is tightly packed with no padding.",
+        "suggestedSimulation": "Independent records and struct pointers",
+        "simulations": [
+          "arithmetic",
+          "structure"
+        ]
+      },
+      {
+        "id": "ex0",
+        "title": "ft_point.h",
+        "page": 13,
+        "requirements": [
+          "Submit ex0/ft_point.h; authorized functions: None.",
+          "The header must allow the supplied main to compile with a t_point variable and set_point(t_point *point).",
+          "The supplied function writes point->x = 42 and point->y = 21 after main calls set_point(&point)."
+        ],
+        "concepts": [
+          "Header definitions",
+          "typedef",
+          "Struct members",
+          "Address-of",
+          "Mutation through a struct pointer"
+        ],
+        "goal": "Define a usable point type and trace how a function changes the caller's x and y through a copied address.",
+        "connection": "A struct pointer works like the int pointers used for output parameters, but member selection follows the pointer.",
+        "observe": "Show main's point object, the copied address in set_point's pointer parameter, and the two member assignments separately. The function changes the original point rather than a separate point copy.",
+        "suggestedSimulation": "Set a point through a struct pointer",
+        "simulations": [
+          "structure"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_strs_to_tab",
+        "page": 14,
+        "requirements": [
+          "Submit ex1/ft_strs_to_tab.c; authorized functions: malloc, free; requirements continue on PDF page 15.",
+          "Prototype: struct s_stock_str *ft_strs_to_tab(int ac, char **av);",
+          "Use the provided ft_stock_str.h defining typedef struct s_stock_str { int size; char *str; char *copy; } t_stock_str.",
+          "Transform each av element into a structure while keeping its original order: size is the string length, str is the string, and copy is a copy of it.",
+          "Allocate the returned record array in memory and set the final element's str to 0 as an end marker.",
+          "Return a NULL pointer if an error occurs."
+        ],
+        "concepts": [
+          "Arrays of structs",
+          "char ** inputs",
+          "Borrowed string address",
+          "Independent allocated string copy",
+          "Length metadata",
+          "Sentinel record",
+          "Allocation failure cleanup"
+        ],
+        "goal": "Connect each original string to a record holding its length, original address, and independently stored copy.",
+        "connection": "Combine string length and duplication with dynamic arrays and structures. A pointer assignment copies an address; duplicating a string copies its characters into new storage.",
+        "observe": "Keep av, the allocated record array, original characters, and copied characters visible. Show str sharing the original string while copy reaches separate memory. Change one copied character to prove independence, and mark the final record by str == NULL rather than an empty string.",
+        "suggestedSimulation": "String records with shared originals and owned copies",
+        "simulations": [
+          "structure",
+          "strdup",
+          "allocation"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_show_tab",
+        "page": 16,
+        "requirements": [
+          "Submit ex2/ft_show_tab.c; authorized function: write.",
+          "Prototype: void ft_show_tab(struct s_stock_str *par);",
+          "Use the same s_stock_str type supplied in ft_stock_str.h and display the array made by ft_strs_to_tab.",
+          "For each record print the original string followed by a newline, then its size followed by a newline, then its possibly modified copy followed by a newline.",
+          "The evaluator will test it using their implementation of ft_strs_to_tab."
+        ],
+        "concepts": [
+          "Struct array traversal",
+          "Sentinel termination",
+          "Pointer member access",
+          "String and integer output",
+          "Data producer and consumer agreement"
+        ],
+        "goal": "Read each record using its agreed layout and display the three fields in the required order.",
+        "connection": "Reuse string output, integer formatting, and pointer traversal. The previous exercise creates the records; this exercise consumes them without needing to own or modify their storage.",
+        "observe": "Highlight par[i], then size, str, or copy as the output step reads it. Display newlines explicitly in the terminal. Stop at str == NULL, and show a modified copy separately from its unchanged original string.",
+        "suggestedSimulation": "Display an array of string records",
+        "simulations": [
+          "structure",
+          "putstr",
+          "digit"
+        ]
+      }
+    ],
+    "source": "01-c-structures.pdf",
+    "path": "Modules\\04-data-structures\\01-c-structures"
+  },
+  {
+    "slug": "00-c-preprocessor",
+    "group": "05-compilation-and-preprocessing",
+    "title": "C-Preprocessor",
+    "summary": "Use headers to share declarations and definitions, and use macros to name constants and expressions before compilation.",
+    "why": "A project with several files needs shared descriptions of its functions and types. The preprocessor prepares the text that the compiler will read.",
+    "prerequisites": [
+      "Function prototypes",
+      "Function parameters and return types",
+      "Pointers",
+      "Header includes",
+      "Conditions and expressions",
+      "argc and argv"
+    ],
+    "statedGoals": [
+      {
+        "text": "Explore headers, macros, and conditional directives to improve code modularity and readability.",
+        "page": 1
+      }
+    ],
+    "interpretation": "The exercises introduce a shared function interface, a named boolean interface, and an expression macro. Include guards and parenthesized macro expressions are useful teaching connections to conditional preprocessing and safe textual substitution, even though the exercise paragraphs do not separately prescribe an include-guard design.",
+    "sourceNotes": [
+      {
+        "page": 10,
+        "text": "The supplied main only includes ft_boolean.h but calls write, so the teaching header should include the declaration needed for write. The header's authorized-functions field is None; this does not mean the supplied main is prohibited from its printed write call."
+      },
+      {
+        "page": 11,
+        "text": "The two displayed shell examples both show ./a.out but describe the alternative even/odd argument-count messages. Explain actual argc - 1 parity rather than implying identical invocations give different results."
+      },
+      {
+        "page": 12,
+        "text": "ABS is an expression macro, not a runtime function call. A demonstration should use a safe pure value such as -7; minimum signed-int negation and arguments with side effects require separate caveats and are not specified assignment cases."
+      }
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft.h",
+        "page": 9,
+        "requirements": [
+          "Submit ex0/ft.h; authorized functions: None.",
+          "Include these prototypes: void ft_putchar(char c); void ft_swap(int *a, int *b); void ft_putstr(char *str); int ft_strlen(char *str); int ft_strcmp(char *s1, char *s2)."
+        ],
+        "concepts": [
+          "Header files",
+          "Function prototypes",
+          "Shared interface",
+          "Inclusion",
+          "Include guards"
+        ],
+        "goal": "Understand how a declaration tells another source file which function name, return type, and parameters it may use.",
+        "connection": "Reuse familiar output, swap, length, and comparison functions, now separating their declarations from their implementations.",
+        "observe": "Show #include expanding the header into source before compilation. Mark prototypes as declarations with no runtime variable mutation or function body execution. Explain that implementations are still needed when the program is linked.",
+        "suggestedSimulation": "Header inclusion and shared prototypes",
+        "simulations": [
+          "build",
+          "preprocessor"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_boolean.h",
+        "page": 10,
+        "requirements": [
+          "Submit ex1/ft_boolean.h; authorized functions: None; example output continues on PDF page 11.",
+          "The header must make the supplied program compile and run using t_bool, EVEN(nbr), TRUE, FALSE, EVEN_MSG, ODD_MSG, and SUCCESS.",
+          "The supplied program checks whether argc - 1 is even and prints the corresponding message, ending with a newline: I have an even number of arguments. or I have an odd number of arguments.",
+          "Use Norminette with -RCheckDefine; the evaluator uses that flag."
+        ],
+        "concepts": [
+          "typedef",
+          "Object-like macros",
+          "Function-like macros",
+          "Boolean conditions",
+          "Argument count",
+          "Conditional operator",
+          "Header inclusion"
+        ],
+        "goal": "Make names describe types, truth values, messages, and a repeated parity test, then see how those names are expanded and used.",
+        "connection": "Combine the header interface from ex0 with earlier modulo arithmetic and if statements. argc includes the executable name, so argc - 1 counts user arguments.",
+        "observe": "Separate preprocessing from runtime steps. Expand EVEN(argc - 1), show the actual user-argument count and its remainder on division by two, then highlight the selected branch and matching terminal message.",
+        "suggestedSimulation": "Boolean macros and command-line parity",
+        "simulations": [
+          "preprocessor",
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_abs.h",
+        "page": 12,
+        "requirements": [
+          "Submit ex2/ft_abs.h; authorized functions: None.",
+          "Create a macro ABS(Value) whose expression yields the absolute value of its argument.",
+          "Use Norminette with -RCheckDefine; the evaluator uses that flag."
+        ],
+        "concepts": [
+          "Function-like macro",
+          "Textual substitution",
+          "Parenthesized arguments",
+          "Conditional expression",
+          "Absolute value"
+        ],
+        "goal": "Distinguish replacing an expression before compilation from calling a function at runtime.",
+        "connection": "Reuse comparison, unary minus, and the conditional operator introduced by the boolean example.",
+        "observe": "Show ABS(-7) expand into a parenthesized conditional expression, then evaluate the condition and selected value. No callback parameter or call frame is created by the macro itself. Use pure arguments so repeated substitution does not hide side effects.",
+        "suggestedSimulation": "Macro expansion before expression evaluation",
+        "simulations": [
+          "preprocessor"
+        ]
+      }
+    ],
+    "source": "00-c-preprocessor.pdf",
+    "path": "Modules\\05-compilation-and-preprocessing\\00-c-preprocessor"
+  },
+  {
+    "slug": "01-c-libft",
+    "group": "05-compilation-and-preprocessing",
+    "title": "C-Libft",
+    "summary": "Package familiar C functions into a static library, first with a shell script and then with a Makefile that rebuilds only what needs rebuilding.",
+    "why": "A library makes your functions reusable across programs. Separate compilation and dependency rules avoid repeating the same manual compilation work.",
+    "prerequisites": [
+      "Shell commands and paths",
+      "Compiling C source",
+      "Headers and prototypes",
+      "Pointer and string functions",
+      "Source and object files"
+    ],
+    "statedGoals": [
+      {
+        "text": "Create libft.a as a static C library and automate its compilation with a Makefile.",
+        "page": 1
+      },
+      {
+        "text": "Create a first Makefile, understand its syntax, and explore the features needed for the present build goals.",
+        "page": 9
+      },
+      {
+        "text": "Use separate compilation so source files that have not changed need not be compiled again.",
+        "page": 9
+      }
+    ],
+    "interpretation": "The module joins file organization with the build lifecycle: .c source becomes .o object code, object files are collected in an archive, and a program can link against that archive. Make determines needed work using targets, prerequisites, and file timestamps.",
+    "sourceNotes": [
+      {
+        "page": 13,
+        "text": "Exercise 1 unusually requires a root main.c to be compiled and its main.o included in libft.a. Preserve this source-specific requirement rather than silently replacing it with usual library conventions."
+      },
+      {
+        "page": 10,
+        "text": "The tutorial says to add fclean, but its next verification sentence says make clean should clean everything. The defined clean/fclean distinction and exercise 1 rules make clear that fclean is the full cleanup."
+      },
+      {
+        "page": 13,
+        "text": "Only the Makefile is submitted for ex1; the evaluator supplies the source files and header. Avoid treating the supplied files as extra student submission files."
+      }
+    ],
+    "exercises": [
+      {
+        "id": "tutorial-makefile",
+        "title": "Tutorial",
+        "page": 9,
+        "requirements": [
+          "Tutorial practice, not a numbered submission exercise; continues through PDF page 11.",
+          "Make a working directory containing ft_strdup.c and a main.c test; verify manual compilation before writing the Makefile.",
+          "Create a file named exactly Makefile with variables NAME = test_strdup, SOURCES = ft_strdup.c main.c, and OBJECTS = $(SOURCES:.c=.o).",
+          "Add a target depending on the object files and link them with cc; observe implicit .c-to-.o rules, run the executable, and inspect generated files.",
+          "Add clean to remove objects and fclean to remove objects and the program; add CFLAGS += -Wall and observe the flag during compilation.",
+          "Create a ft_range subdirectory with ft_range.c and a main.c; extend the Makefile to build and clean both test programs.",
+          "Delete one object file and run make all; run make all again without changes and investigate dependencies and timestamps."
+        ],
+        "concepts": [
+          "Targets",
+          "Prerequisites",
+          "Recipes",
+          "Make variables",
+          "Substitution references",
+          "Implicit compilation rules",
+          "Separate compilation",
+          "Timestamps",
+          "Incremental builds",
+          "Cleanup targets"
+        ],
+        "goal": "Understand why make compiles a missing or outdated object but can leave an up-to-date object alone.",
+        "connection": "Turn the manual cc commands learned earlier into dependency rules over familiar source files.",
+        "observe": "Show the source, object, and executable files with their dependency connections and timestamps. Highlight each actual command, then compare first build, unchanged second build, one-source rebuild, clean, and fclean. Makefile recipe lines require a real tab.",
+        "suggestedSimulation": "Incremental build and cleanup",
+        "simulations": [
+          "build"
+        ]
+      },
+      {
+        "id": "ex0",
+        "title": "libft",
+        "page": 12,
+        "requirements": [
+          "Submit ex0/libft_creator.sh and ft_putchar.c, ft_swap.c, ft_putstr.c, ft_strlen.c, ft_strcmp.c; authorized function: write.",
+          "Create a static library named libft.a containing all five required functions.",
+          "The shell script must compile the source files appropriately and create the library when invoked with sh libft_creator.sh.",
+          "Function declarations: void ft_putchar(char c); void ft_swap(int *a, int *b); void ft_putstr(char *str); int ft_strlen(char *str); int ft_strcmp(char *s1, char *s2).",
+          "The five function entries below are required parts of ex0, not additional numbered exercises."
+        ],
+        "concepts": [
+          "Static libraries",
+          "Object files",
+          "Shell build script",
+          "Archive creation",
+          "Reusable functions"
+        ],
+        "goal": "Package separately compiled functions into one named archive instead of treating every source file as a separate program.",
+        "connection": "Reuse already learned output, pointer, and string functions; connect their source files to compiled objects and a library file.",
+        "observe": "Highlight each source-to-object compilation command and the creation of libft.a. Show that an archive is a collection of compiled pieces, not a runnable program; a separate main can link and call the pieces.",
+        "suggestedSimulation": "Create and use a static library",
+        "simulations": [
+          "build",
+          "write-char",
+          "swap",
+          "putstr",
+          "strlen",
+          "strcmp"
+        ]
+      },
+      {
+        "id": "ex0-ft_putchar",
+        "title": "ft_putchar",
+        "page": 12,
+        "requirements": [
+          "Required function within ex0/libft, not a separate numbered exercise.",
+          "Provide ft_putchar.c implementing void ft_putchar(char c); the library exercise authorizes write."
+        ],
+        "concepts": [
+          "char parameter by value",
+          "Address of a local byte",
+          "write",
+          "Standard output"
+        ],
+        "goal": "Connect a copied character parameter with writing one byte from its address.",
+        "connection": "Reuse basic character output and distinguish the character value from &c.",
+        "observe": "Show c receive one character, write read one byte at &c, and one new character appear in the terminal.",
+        "suggestedSimulation": "Write one character",
+        "simulations": [
+          "write-char"
+        ]
+      },
+      {
+        "id": "ex0-ft_swap",
+        "title": "ft_swap",
+        "page": 12,
+        "requirements": [
+          "Required function within ex0/libft, not a separate numbered exercise.",
+          "Provide ft_swap.c implementing void ft_swap(int *a, int *b)."
+        ],
+        "concepts": [
+          "Pointer parameters",
+          "Dereferencing",
+          "Temporary storage",
+          "Mutation of caller values"
+        ],
+        "goal": "Exchange two caller values without losing the first value during assignment.",
+        "connection": "Reuse the pointer module's swap operation inside the library.",
+        "observe": "Show the two copied addresses, save the first pointed-to value in a temporary, then perform and highlight the two writes.",
+        "suggestedSimulation": "Swap through pointer parameters",
+        "simulations": [
+          "swap"
+        ]
+      },
+      {
+        "id": "ex0-ft_putstr",
+        "title": "ft_putstr",
+        "page": 12,
+        "requirements": [
+          "Required function within ex0/libft, not a separate numbered exercise.",
+          "Provide ft_putstr.c implementing void ft_putstr(char *str); the library exercise authorizes write."
+        ],
+        "concepts": [
+          "String pointer",
+          "Null terminator",
+          "Character traversal",
+          "write"
+        ],
+        "goal": "Output each string character while stopping at the null character rather than printing it.",
+        "connection": "Combine the one-character output operation with string traversal.",
+        "observe": "Highlight the current character and its address, add output only at write steps, and stop when the next character is '\\0'.",
+        "suggestedSimulation": "Write a string one character at a time",
+        "simulations": [
+          "putstr",
+          "string"
+        ]
+      },
+      {
+        "id": "ex0-ft_strlen",
+        "title": "ft_strlen",
+        "page": 12,
+        "requirements": [
+          "Required function within ex0/libft, not a separate numbered exercise.",
+          "Provide ft_strlen.c implementing int ft_strlen(char *str)."
+        ],
+        "concepts": [
+          "Counting characters",
+          "Null terminator",
+          "Array reads",
+          "Return value"
+        ],
+        "goal": "Count the visible string characters without counting the terminating null character.",
+        "connection": "Reuse the same traversal as ft_putstr, but accumulate and return a number rather than writing output.",
+        "observe": "Watch the character index and count increase, keep string memory unchanged, and show the returned length copied into the caller's destination.",
+        "suggestedSimulation": "Measure a string",
+        "simulations": [
+          "strlen"
+        ]
+      },
+      {
+        "id": "ex0-ft_strcmp",
+        "title": "ft_strcmp",
+        "page": 12,
+        "requirements": [
+          "Required function within ex0/libft, not a separate numbered exercise.",
+          "Provide ft_strcmp.c implementing int ft_strcmp(char *s1, char *s2).",
+          "This page lists the declaration but does not separately restate strcmp behavior; connect it to the earlier string comparison exercise rather than claim added semantics were printed here."
+        ],
+        "concepts": [
+          "Parallel string traversal",
+          "First differing character",
+          "Lexicographic comparison",
+          "Sign of a result"
+        ],
+        "goal": "Compare strings by their first differing character and interpret the sign of the result.",
+        "connection": "Reuse the earlier string module's comparison operation as one exported library function.",
+        "observe": "Align both current characters, advance together while equal, then show a negative, zero, or positive result without changing either string. Use unsigned-character comparison in the correct teaching implementation.",
+        "suggestedSimulation": "Compare two strings",
+        "simulations": [
+          "strcmp"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "Makefile",
+        "page": 13,
+        "requirements": [
+          "Submit ex1/Makefile only; authorized functions: None; requirements continue on PDF page 14.",
+          "Build libft.a at the exercise root from srcs/ft_putchar.c, srcs/ft_swap.c, srcs/ft_putstr.c, srcs/ft_strlen.c, and srcs/ft_strcmp.c, using includes/ft.h.",
+          "Compile with cc and flags -Wall -Wextra -Werror in that order. Keep .o files next to their .c files.",
+          "Also compile root main.c with the same flags and include its main.o in the archive, as explicitly required by this subject.",
+          "Print every command run and run no unnecessary commands or compilations.",
+          "Implement all, libft.a, clean, fclean, and re; bare make must equal make all, and all must build libft.a.",
+          "clean removes temporary generated files; fclean also removes binaries produced by all; re performs fclean followed by all.",
+          "The evaluator fetches only the Makefile and supplies its own source/header files; the subject warns about wildcards."
+        ],
+        "concepts": [
+          "Explicit source list",
+          "Header dependencies",
+          "Include paths",
+          "Object placement",
+          "Archive target",
+          "Incremental compilation",
+          "Cleanup and rebuild targets"
+        ],
+        "goal": "Describe the build accurately so the right files are created in the right places and unchanged files cause no unnecessary work.",
+        "connection": "Automate the static-library script from ex0 using the targets and dependencies practiced in the tutorial.",
+        "observe": "Show source and header prerequisites, compiled objects including root main.o, the archive contents, and the command log. Repeat make without changes, then change one source or a header to explain which dependencies need rebuilding. Compare clean, fclean, and re effects separately.",
+        "suggestedSimulation": "Build a library with Makefile dependencies",
+        "simulations": [
+          "build"
+        ]
+      }
+    ],
+    "source": "01-c-libft.pdf",
+    "path": "Modules\\05-compilation-and-preprocessing\\01-c-libft"
+  },
+  {
+    "slug": "00-c-file-operations",
+    "group": "06-system-interface",
+    "title": "C-File-Operations",
+    "summary": "Use file descriptors and system calls to read files in chunks and reproduce selected behaviors of display_file, cat, tail, and hexdump.",
+    "why": "Files may be larger than a program's buffer. Correct file handling tracks how many bytes were read or written, handles errors, and closes resources.",
+    "prerequisites": [
+      "argc and argv",
+      "Character buffers",
+      "Pointers and sizes",
+      "Loops and return values",
+      "Makefile targets",
+      "malloc and free for later exercises"
+    ],
+    "statedGoals": [
+      {
+        "text": "Reproduce common file operations, including reading, writing, and manipulating files through system calls.",
+        "page": 1
+      },
+      {
+        "text": "Read the manuals for every authorized function in the cat exercise.",
+        "page": 11
+      }
+    ],
+    "interpretation": "The progression moves from displaying one file to concatenating input streams, keeping only the last requested bytes, and formatting bytes as hexadecimal and readable characters. The lessons should distinguish file storage, the program's buffer, descriptor/offset state, stdout, and stderr.",
+    "sourceNotes": [
+      {
+        "page": 10,
+        "text": "The display_file paragraph says all file arguments are valid but also explicitly requires a Cannot read file. error. Preserve the failure behavior in the analysis and teaching demonstration."
+      },
+      {
+        "page": 11,
+        "text": "The cat fixed-array limit is described as a little less than 30 ko, not an exact byte number. Do not silently turn it into an exact boundary."
+      },
+      {
+        "page": 13,
+        "text": "hexdump is requested without redirection. The assignment only singles out -C; detailed system-command formatting should be checked against the relevant manual/system behavior before implementing a full replica."
+      }
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "display_file",
+        "page": 10,
+        "requirements": [
+          "Submit ex0/Makefile and program files; authorized functions: close, open, read, write.",
+          "Create the ft_display_file program that writes only the named file's contents to standard output.",
+          "Provide Makefile targets all, clean, and fclean; name the binary ft_display_file.",
+          "malloc is forbidden; use a fixed-size array.",
+          "The subject states that supplied file arguments are valid, while also requiring unreadable-file handling.",
+          "Write error messages to their reserved error output, each with a newline: File name missing. when no filename is supplied; Too many arguments. when more than one is supplied; Cannot read file. when the file cannot be read."
+        ],
+        "concepts": [
+          "File descriptor",
+          "open/read/write/close",
+          "Fixed buffer",
+          "Byte counts",
+          "End of file",
+          "Argument validation",
+          "Standard output and error"
+        ],
+        "goal": "Move file bytes through a small reusable buffer into terminal output while checking arguments and I/O results.",
+        "connection": "Extend write-based output by obtaining the bytes from a file rather than a string already in memory. Reuse loops and copied pointer addresses for buffers.",
+        "observe": "Show open producing a descriptor, each read filling the buffer and advancing the file position, write transferring exactly the valid byte count, EOF returning 0, and close ending access. Explain that buffer bytes need not be a null-terminated string. Include a compact error branch and avoid outputting stale buffer contents.",
+        "suggestedSimulation": "Read a file through a fixed buffer",
+        "simulations": [
+          "file-read"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "cat",
+        "page": 11,
+        "requirements": [
+          "Submit ex1/Makefile and program files; authorized functions: close, open, read, write, strerror, basename.",
+          "Create ft_cat with the behavior of the system cat command; options do not need to be handled.",
+          "Provide Makefile targets all, clean, and fclean.",
+          "errno may be used; read the manuals for the authorized functions.",
+          "Use a fixed-size array with its size limited to a little less than 30 ko; the subject recommends ulimit to test the limit."
+        ],
+        "concepts": [
+          "Multiple files in order",
+          "Standard input",
+          "Streaming",
+          "Fixed buffers",
+          "errno and diagnostic text",
+          "Program basename",
+          "Partial reads and writes"
+        ],
+        "goal": "Reuse the same streaming loop for input sources while keeping ordinary content separate from diagnostic output.",
+        "connection": "Generalize display_file to cat-style input streams and add descriptive error reporting. Reading standard input when appropriate is a consequence of reproducing cat, rather than a separately printed bullet in this subject.",
+        "observe": "Show which source is active, buffer contents after each read, exact output additions, and progression from one file to the next. Demonstrate that a read may return fewer bytes than the buffer capacity and that an error belongs on stderr, with errno captured before unrelated operations overwrite it.",
+        "suggestedSimulation": "Concatenate file streams",
+        "simulations": [
+          "file-read"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "tail",
+        "page": 12,
+        "requirements": [
+          "Submit ex2/Makefile and program files; authorized functions: close, open, read, write, malloc, free, strerror, basename.",
+          "Create ft_tail with the system tail behavior for the -c option only; '+' and '-' signs need not be supported.",
+          "All evaluator tests use -c.",
+          "Provide Makefile targets all, clean, and fclean; errno may be used."
+        ],
+        "concepts": [
+          "Byte count option",
+          "Last N bytes",
+          "Streaming state",
+          "Bounded retention",
+          "Allocation",
+          "Input shorter than N",
+          "Resource cleanup"
+        ],
+        "goal": "Keep the requested end of a byte stream rather than display the whole input or count lines.",
+        "connection": "Start with the cat read loop, then add state that retains only the bytes needed for the final output. A ring buffer is one teaching strategy, not a mandated implementation.",
+        "observe": "Trace a small input such as ABCDEFG with -c 3, showing each incoming byte and how retained bytes change until EFG is printed. Show the selected teaching algorithm plainly and distinguish byte count from character or line count.",
+        "suggestedSimulation": "Retain the last requested bytes",
+        "simulations": [
+          "tail-bytes",
+          "file-read"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "hexdump",
+        "page": 13,
+        "requirements": [
+          "Submit ex3/Makefile and program files; authorized functions: close, open, read, write, malloc, free, strerror, basename.",
+          "Create ft_hexdump reproducing the system hexdump command without redirection.",
+          "The only option to support is -C.",
+          "Provide Makefile targets all, clean, and fclean; errno may be used."
+        ],
+        "concepts": [
+          "Bytes versus displayed characters",
+          "Hexadecimal representation",
+          "Offsets",
+          "Fixed-width output rows",
+          "Printable character view",
+          "Final partial row"
+        ],
+        "goal": "Inspect raw file bytes by displaying each byte both as a hexadecimal number and, where printable, as a character.",
+        "connection": "Combine the previous buffered file reads with the earlier base-conversion and character-classification concepts.",
+        "observe": "Align the byte offset, underlying buffer bytes, hexadecimal columns, and character view. Include a nonprintable byte and a short final row so students see why byte data cannot always be read as ordinary text. A representative formatting trace is a learning example, not a claim to cover every full-command behavior.",
+        "suggestedSimulation": "Format a byte buffer as a hex dump",
+        "simulations": [
+          "hexdump",
+          "file-read"
+        ]
+      }
+    ],
+    "source": "00-c-file-operations.pdf",
+    "path": "Modules\\06-system-interface\\00-c-file-operations"
+  },
+  {
+    "slug": "00-c-linked-lists",
+    "group": "07-dynamic-data-structures",
+    "title": "C-Linked-Lists",
+    "summary": "Build a chain of nodes, then create, inspect, change, reverse, and sort that chain.",
+    "why": "A linked list can grow without requiring its nodes to sit next to each other in memory. Correct links and ownership keep every node reachable and allow memory to be released safely.",
+    "prerequisites": [
+      "Pointers and pointer-to-pointer parameters",
+      "Structures and the -> operator",
+      "malloc and free",
+      "Function pointers and comparison callbacks",
+      "Iteration and recursion"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement functions for creating, modifying, and manipulating singly linked lists, including insertion, deletion, and sorting.",
+        "page": 1
+      },
+      {
+        "text": "Build programming foundations through practice, reasoning, and peer learning.",
+        "page": 6
+      }
+    ],
+    "interpretation": "The exercises progress from allocating one node to maintaining a whole chain. They develop the distinction between a node, its payload, its next pointer, and the caller's head pointer; later exercises combine ownership with callback-driven algorithms.",
+    "commonRequirements": [
+      "Use t_list with struct s_list *next and void *data, defined in ft_list.h (PDF page 10).",
+      "From ex1 onward, the evaluator uses its own ft_create_elem; arrange a suitable declaration.",
+      "Compile with cc -Wall -Wextra -Werror, follow the Norm, and submit only the requested files."
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "ft_create_elem",
+        "page": 11,
+        "requirements": [
+          "Submit ft_create_elem.c and ft_list.h; malloc is the authorized function.",
+          "Create a t_list node, assign its data from the supplied argument, and set next to NULL.",
+          "Prototype: t_list *ft_create_elem(void *data);"
+        ],
+        "concepts": [
+          "Heap allocation",
+          "Structure fields",
+          "Payload pointer versus node pointer"
+        ],
+        "goal": "Create one node and understand that assigning data copies an address rather than duplicating the object it points to.",
+        "connection": "Combines structures with malloc and pointer assignment.",
+        "observe": "A new heap node appears. Its data points to the existing payload and its next field is NULL.",
+        "suggestedSimulation": "Create a linked-list node",
+        "simulations": [
+          "allocation",
+          "list-insert"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "ft_list_push_front",
+        "page": 12,
+        "requirements": [
+          "Submit ft_list_push_front.c and ft_list.h; ft_create_elem is authorized.",
+          "Add a new t_list node at the beginning, assign the given data, and update the beginning pointer when necessary.",
+          "Prototype: void ft_list_push_front(t_list **begin_list, void *data);"
+        ],
+        "concepts": [
+          "Head insertion",
+          "Pointer-to-pointer",
+          "Link updates"
+        ],
+        "goal": "Use the address of the caller's head variable to change which node starts the list.",
+        "connection": "Builds on output parameters and creating one node.",
+        "observe": "The new node first links to the old head; the caller's head then changes to the new node. Test an empty list too.",
+        "suggestedSimulation": "Insert at the head",
+        "simulations": [
+          "list-insert"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "ft_list_size",
+        "page": 13,
+        "requirements": [
+          "Submit ft_list_size.c and ft_list.h; no functions are authorized.",
+          "Return the number of elements in the list.",
+          "Prototype: int ft_list_size(t_list *begin_list);"
+        ],
+        "concepts": [
+          "Traversal",
+          "Counting",
+          "NULL termination"
+        ],
+        "goal": "Follow next addresses until the chain ends and count nodes without changing the chain.",
+        "connection": "Reuses while loops, counters, and dereferencing structure pointers.",
+        "observe": "Only the traversal pointer and count change; node contents and the caller's head stay unchanged.",
+        "suggestedSimulation": "Walk and count nodes",
+        "simulations": [
+          "list-walk"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "ft_list_last",
+        "page": 14,
+        "requirements": [
+          "Submit ft_list_last.c and ft_list.h; no functions are authorized.",
+          "Return the last element of the list.",
+          "Prototype: t_list *ft_list_last(t_list *begin_list);"
+        ],
+        "concepts": [
+          "Traversal",
+          "Last-node detection",
+          "Pointer return value"
+        ],
+        "goal": "Recognize the last node by its NULL next field and return that node's address.",
+        "connection": "Extends counting traversal by stopping at the last node instead of after it.",
+        "observe": "Compare the current node address with its next address; returning an address does not copy the node.",
+        "suggestedSimulation": "Find the tail",
+        "simulations": [
+          "list-walk"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "ft_list_push_back",
+        "page": 15,
+        "requirements": [
+          "Submit ft_list_push_back.c and ft_list.h; ft_create_elem is authorized.",
+          "Add a new t_list node at the end, assign the given data, and update the beginning pointer if necessary.",
+          "Prototype: void ft_list_push_back(t_list **begin_list, void *data);"
+        ],
+        "concepts": [
+          "Tail insertion",
+          "Empty-list case",
+          "Link updates"
+        ],
+        "goal": "Attach a node after the tail while handling the separate case in which no head exists.",
+        "connection": "Combines node creation, tail traversal, and head output parameters.",
+        "observe": "For a nonempty list, only the old tail's next changes; for an empty list, the head changes.",
+        "suggestedSimulation": "Append a node",
+        "simulations": [
+          "list-insert",
+          "list-walk"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "ft_list_push_strs",
+        "page": 16,
+        "requirements": [
+          "Submit ft_list_push_strs.c and ft_list.h; ft_create_elem is authorized.",
+          "Create a list containing the strings pointed to by the elements of strs; size is the number of strs entries.",
+          "The first array element must be at the end of the resulting list; return the first link's address.",
+          "Prototype: t_list *ft_list_push_strs(int size, char **strs);"
+        ],
+        "concepts": [
+          "Array of string pointers",
+          "Head insertion",
+          "Order reversal"
+        ],
+        "goal": "Transform an array of string addresses into a chain and understand how inserting at the front changes order.",
+        "connection": "Combines char ** array access with repeated node insertion.",
+        "observe": "Each node retains a string address. The first input string ends up at the tail; node creation does not itself duplicate string bytes.",
+        "suggestedSimulation": "Build a list from strings",
+        "simulations": [
+          "list-insert",
+          "argv"
+        ]
+      },
+      {
+        "id": "ex6",
+        "title": "ft_list_clear",
+        "page": 17,
+        "requirements": [
+          "Submit ft_list_clear.c and ft_list.h; free is authorized.",
+          "Remove and free every link; use free_fct to free each data payload.",
+          "Prototype: void ft_list_clear(t_list *begin_list, void (*free_fct)(void *));"
+        ],
+        "concepts": [
+          "Ownership",
+          "Saved next address",
+          "Callback cleanup",
+          "Use after free"
+        ],
+        "goal": "Free payloads and nodes without reading a node after its memory has been released.",
+        "connection": "Extends heap cleanup to a structure whose pieces are linked by addresses.",
+        "observe": "Save the next address before releasing the current node. A freed node is no longer valid to dereference; the passed head is a copy.",
+        "suggestedSimulation": "Safely free a list",
+        "simulations": [
+          "list-remove",
+          "allocation"
+        ]
+      },
+      {
+        "id": "ex7",
+        "title": "ft_list_at",
+        "page": 18,
+        "requirements": [
+          "Submit ft_list_at.c and ft_list.h; no functions are authorized.",
+          "Return the Nth node with the first node numbered 0; return a null pointer on error.",
+          "Prototype: t_list *ft_list_at(t_list *begin_list, unsigned int nbr);"
+        ],
+        "concepts": [
+          "Zero-based indexing",
+          "Traversal",
+          "Out-of-range handling"
+        ],
+        "goal": "Reach a numbered position by following links rather than calculating an array address.",
+        "connection": "Reuses array indexing ideas while showing why linked-list access requires traversal.",
+        "observe": "Each next step advances one node; reaching NULL before the requested position produces a null return.",
+        "suggestedSimulation": "Find node by position",
+        "simulations": [
+          "list-walk"
+        ]
+      },
+      {
+        "id": "ex8",
+        "title": "ft_list_reverse",
+        "page": 19,
+        "requirements": [
+          "Submit ft_list_reverse.c only; no functions are authorized and the evaluator supplies ft_list.h.",
+          "Reverse the order of the list's elements while keeping each element's value unchanged.",
+          "Prototype: void ft_list_reverse(t_list **begin_list);"
+        ],
+        "concepts": [
+          "Reversing links",
+          "Previous/current/next pointers",
+          "Head replacement"
+        ],
+        "goal": "Reverse the direction of the chain without losing the remaining nodes or changing payload values.",
+        "connection": "Generalizes array reversal to linked nodes and pointer-to-pointer output.",
+        "observe": "Keep the next address before changing current->next. Node data stays unchanged; arrows reverse and the old tail becomes the head.",
+        "suggestedSimulation": "Reverse list links",
+        "simulations": [
+          "list-reverse"
+        ]
+      },
+      {
+        "id": "ex9",
+        "title": "ft_list_foreach",
+        "page": 20,
+        "requirements": [
+          "Submit ft_list_foreach.c and ft_list.h; no functions are authorized.",
+          "Apply f to every list element's data in list order, using (*f)(list_ptr->data).",
+          "Prototype: void ft_list_foreach(t_list *begin_list, void (*f)(void *));"
+        ],
+        "concepts": [
+          "Function-pointer callbacks",
+          "Generic payloads",
+          "Traversal order"
+        ],
+        "goal": "Separate walking the list from the operation performed on each payload.",
+        "connection": "Combines function pointers with linked-list traversal.",
+        "observe": "The callback receives the stored payload address. Its operation happens once per node and in chain order.",
+        "suggestedSimulation": "Apply a callback to every node",
+        "simulations": [
+          "list-walk",
+          "callback"
+        ]
+      },
+      {
+        "id": "ex10",
+        "title": "ft_list_foreach_if",
+        "page": 21,
+        "requirements": [
+          "Submit ft_list_foreach_if.c and ft_list.h; no functions are authorized.",
+          "Apply f in list order only when cmp(list_ptr->data, data_ref) returns 0.",
+          "Call f on list_ptr->data; cmp can be a function such as ft_strcmp.",
+          "Prototype: void ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void *data_ref, int (*cmp)(void *, void *));"
+        ],
+        "concepts": [
+          "Filtering",
+          "Comparator return values",
+          "Callbacks"
+        ],
+        "goal": "Use one callback to decide whether another callback should run.",
+        "connection": "Adds conditions and comparison functions to foreach traversal.",
+        "observe": "A comparison result of 0 means a match. Show both a skipped node and a node whose callback runs.",
+        "suggestedSimulation": "Conditionally apply a callback",
+        "simulations": [
+          "list-walk",
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex11",
+        "title": "ft_list_find",
+        "page": 22,
+        "requirements": [
+          "Submit ft_list_find.c and ft_list.h; no functions are authorized.",
+          "Find the first element for which cmp(list_ptr->data, data_ref) returns 0.",
+          "Prototype: t_list *ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)(void *, void *));",
+          "The prose refers to the first element's data address, but the declared return type is t_list *; this discrepancy must remain visible."
+        ],
+        "concepts": [
+          "Search",
+          "First match",
+          "Comparator callback",
+          "Node versus payload"
+        ],
+        "goal": "Stop at the first matching payload and distinguish the node address from the payload address.",
+        "connection": "Reuses conditional traversal; the prototype introduces a pointer return rather than a mutation.",
+        "observe": "Compare one node at a time, stop on cmp == 0, and distinguish returned node from its data. A no-match NULL return is a conventional interpretation, not an explicit statement here.",
+        "suggestedSimulation": "Search for the first matching node",
+        "simulations": [
+          "list-walk",
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex12",
+        "title": "ft_list_remove_if",
+        "page": 23,
+        "requirements": [
+          "Submit ft_list_remove_if.c and ft_list.h; free is authorized.",
+          "Remove all nodes whose cmp(data, data_ref) result is 0, and free each removed data payload using free_fct.",
+          "Prototype: void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void *, void *), void (*free_fct)(void *));"
+        ],
+        "concepts": [
+          "Unlinking",
+          "Head deletion",
+          "Ownership",
+          "Consecutive matches"
+        ],
+        "goal": "Remove matching nodes while preserving a valid chain and releasing their memory.",
+        "connection": "Combines filtering, list cleanup, and changing the caller's head pointer.",
+        "observe": "Show removal at the head and in the middle, including consecutive matches. A surviving pointer must bypass each deleted node.",
+        "suggestedSimulation": "Remove matching nodes",
+        "simulations": [
+          "list-remove",
+          "predicate"
+        ]
+      },
+      {
+        "id": "ex13",
+        "title": "ft_list_merge",
+        "page": 24,
+        "requirements": [
+          "Submit ft_list_merge.c and ft_list.h; no functions are authorized.",
+          "Append all nodes of begin_list2 after begin_list1; creating new elements is forbidden.",
+          "Prototype: void ft_list_merge(t_list **begin_list1, t_list *begin_list2);"
+        ],
+        "concepts": [
+          "Concatenation",
+          "Reusing nodes",
+          "Aliasing"
+        ],
+        "goal": "Join two chains by changing links rather than allocating or copying nodes.",
+        "connection": "Builds on finding a tail and handling an empty head.",
+        "observe": "Only a boundary link or the first head changes. The second list's node addresses are reused, so callers can still hold aliases to them.",
+        "suggestedSimulation": "Join two lists",
+        "simulations": [
+          "list-insert",
+          "list-walk"
+        ]
+      },
+      {
+        "id": "ex14",
+        "title": "ft_list_sort",
+        "page": 25,
+        "requirements": [
+          "Submit ft_list_sort.c and ft_list.h; no functions are authorized.",
+          "Sort list elements in ascending order using cmp to compare their data.",
+          "Prototype: void ft_list_sort(t_list **begin_list, int (*cmp)(void *, void *));",
+          "Call the comparator with the two nodes' data; ft_strcmp is an example."
+        ],
+        "concepts": [
+          "Ordering",
+          "Comparator callbacks",
+          "List mutation"
+        ],
+        "goal": "Use comparison results to produce an ordered chain while keeping every node and payload reachable.",
+        "connection": "Transfers array-sorting reasoning to linked structures and generic data.",
+        "observe": "Highlight the two compared payloads and the change that fixes their order. The PDF does not prescribe a particular sorting algorithm.",
+        "suggestedSimulation": "Sort linked-list data",
+        "simulations": [
+          "list-walk",
+          "sort",
+          "callback"
+        ]
+      },
+      {
+        "id": "ex15",
+        "title": "ft_list_reverse_fun",
+        "page": 26,
+        "requirements": [
+          "Submit ft_list_reverse_fun.c and ft_list.h; no functions are authorized.",
+          "Reverse the order of the elements in the list.",
+          "Prototype: void ft_list_reverse_fun(t_list *begin_list);"
+        ],
+        "concepts": [
+          "Payload reversal",
+          "Pass-by-value head",
+          "Contrast with link reversal"
+        ],
+        "goal": "Explore how a reversal can be visible through the original head when the function receives only a copied head address.",
+        "connection": "Contrasts with ex8's t_list ** signature and array value swapping.",
+        "observe": "A representative interpretation swaps data between fixed nodes. Highlight unchanged head and next fields versus changed payload addresses; the PDF does not explicitly prescribe data swapping.",
+        "suggestedSimulation": "Reverse payload order in fixed nodes",
+        "simulations": [
+          "list-walk",
+          "swap",
+          "reverse"
+        ]
+      },
+      {
+        "id": "ex16",
+        "title": "ft_sorted_list_insert",
+        "page": 27,
+        "requirements": [
+          "Submit ft_sorted_list_insert.c and ft_list.h; ft_create_elem is authorized.",
+          "Create a new element and insert it into a list while retaining ascending order using cmp on data.",
+          "Prototype: void ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)(void *, void *));"
+        ],
+        "concepts": [
+          "Sorted insertion",
+          "Comparator callbacks",
+          "Head/middle/tail cases"
+        ],
+        "goal": "Find an insertion position that keeps the order correct and reconnect both sides of the new node.",
+        "connection": "Combines conditional search with front/back insertion.",
+        "observe": "Compare until the position is known, then show the two affected links. Include insertion before the head and after the tail.",
+        "suggestedSimulation": "Insert into a sorted list",
+        "simulations": [
+          "list-insert",
+          "strcmp"
+        ]
+      },
+      {
+        "id": "ex17",
+        "title": "ft_sorted_list_merge",
+        "page": 28,
+        "requirements": [
+          "Submit ft_sorted_list_merge.c and ft_list.h; no functions are authorized.",
+          "Integrate nodes of sorted begin_list2 into sorted begin_list1, preserving ascending order using cmp on data.",
+          "Prototype: void ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)(void *, void *));"
+        ],
+        "concepts": [
+          "Sorted merge",
+          "Two traversals",
+          "Node reuse"
+        ],
+        "goal": "Combine two ordered chains without losing nodes or breaking ascending order.",
+        "connection": "Brings together ordinary merge, sorted insertion, and comparator callbacks.",
+        "observe": "Compare the next candidate from each chain, link the smaller candidate, and advance only the chain it came from.",
+        "suggestedSimulation": "Merge two sorted lists",
+        "simulations": [
+          "list-insert",
+          "sort"
+        ]
+      }
+    ],
+    "ambiguities": [
+      "ex11 prose mentions a data address while its prototype returns t_list *; interpret a returned matching node only with a visible source note.",
+      "ex15 does not explicitly say to swap data; that distinction is inferred from its single-pointer signature and its contrast with ex8.",
+      "Allocation-failure behavior and several empty-list return cases are not explicitly specified."
+    ],
+    "source": "00-c-linked-lists.pdf",
+    "path": "Modules\\07-dynamic-data-structures\\00-c-linked-lists"
+  },
+  {
+    "slug": "01-c-binary-trees",
+    "group": "07-dynamic-data-structures",
+    "title": "C-Binary-Trees",
+    "summary": "Create nodes with left and right child links, traverse them in different orders, and build a searchable ordered tree.",
+    "why": "Trees represent branching relationships. Their traversals show how the same stored values produce different visit orders, and sorted insertion makes comparison guide a search.",
+    "prerequisites": [
+      "Structures and heap allocation",
+      "Pointers and pointer-to-pointer parameters",
+      "Function-pointer callbacks",
+      "Recursion and base cases",
+      "Linked-list traversal"
+    ],
+    "statedGoals": [
+      {
+        "text": "Implement and manipulate binary trees in C.",
+        "page": 1
+      },
+      {
+        "text": "Build programming foundations through practice, reasoning, and peer learning.",
+        "page": 6
+      }
+    ],
+    "interpretation": "The progression teaches safe recursive exploration of branching structures, callback placement, search-tree ordering, and the difference between visiting by depth and visiting by level.",
+    "commonRequirements": [
+      "Use t_btree containing struct s_btree *left, struct s_btree *right, and void *item, defined in ft_btree.h (PDF page 9).",
+      "Submit ft_btree.h for each exercise; from ex1 onward the evaluator uses its own btree_create_node.",
+      "Compile with cc -Wall -Wextra -Werror, follow the Norm, and submit only requested files."
+    ],
+    "exercises": [
+      {
+        "id": "ex0",
+        "title": "btree_create_node",
+        "page": 10,
+        "requirements": [
+          "Submit btree_create_node.c and ft_btree.h; malloc is authorized.",
+          "Allocate a new node, set item to the supplied argument, set other fields to 0, and return its address.",
+          "Prototype: t_btree *btree_create_node(void *item);"
+        ],
+        "concepts": [
+          "Heap node",
+          "Child pointers",
+          "Payload address"
+        ],
+        "goal": "Create a tree node whose payload refers to an existing object and whose children are initially absent.",
+        "connection": "Extends list-node creation from one next link to two child links.",
+        "observe": "A node allocation appears, item holds a copied address, and both left and right are NULL.",
+        "suggestedSimulation": "Create a binary-tree node",
+        "simulations": [
+          "structure",
+          "allocation",
+          "tree-prefix"
+        ]
+      },
+      {
+        "id": "ex1",
+        "title": "btree_apply_prefix",
+        "page": 11,
+        "requirements": [
+          "Submit btree_apply_prefix.c and ft_btree.h; no functions are authorized.",
+          "Apply the given function to every node item using prefix traversal.",
+          "Prototype: void btree_apply_prefix(t_btree *root, void (*applyf)(void *));"
+        ],
+        "concepts": [
+          "Preorder traversal",
+          "Recursion",
+          "Callbacks"
+        ],
+        "goal": "Visit the current node before its left and right subtrees.",
+        "connection": "Combines callback traversal with recursive function calls.",
+        "observe": "The visit happens before descending. Show the call stack, NULL base cases, and root-left-right output order.",
+        "suggestedSimulation": "Prefix tree traversal",
+        "simulations": [
+          "tree-prefix"
+        ]
+      },
+      {
+        "id": "ex2",
+        "title": "btree_apply_infix",
+        "page": 12,
+        "requirements": [
+          "Submit btree_apply_infix.c and ft_btree.h; no functions are authorized.",
+          "Apply the given function to every node item using infix traversal.",
+          "Prototype: void btree_apply_infix(t_btree *root, void (*applyf)(void *));"
+        ],
+        "concepts": [
+          "Inorder traversal",
+          "Recursive return",
+          "Callback placement"
+        ],
+        "goal": "Visit the left subtree, then the current node, then the right subtree.",
+        "connection": "Changes only where the callback occurs relative to prefix recursion; in an ordered tree it reveals ascending values.",
+        "observe": "A call must finish the left subtree before visiting its own node. Highlight left-root-right output.",
+        "suggestedSimulation": "Infix tree traversal",
+        "simulations": [
+          "tree-infix"
+        ]
+      },
+      {
+        "id": "ex3",
+        "title": "btree_apply_suffix",
+        "page": 13,
+        "requirements": [
+          "Submit btree_apply_suffix.c and ft_btree.h; no functions are authorized.",
+          "Apply the given function to every node item using suffix traversal.",
+          "Prototype: void btree_apply_suffix(t_btree *root, void (*applyf)(void *));"
+        ],
+        "concepts": [
+          "Postorder traversal",
+          "Recursive return",
+          "Children before parent"
+        ],
+        "goal": "Finish both child subtrees before visiting their parent.",
+        "connection": "Completes the traversal-order comparison; children-first order is useful when a later cleanup operation depends on child completion.",
+        "observe": "The parent visit waits until both recursive calls return. Highlight left-right-root output.",
+        "suggestedSimulation": "Suffix tree traversal",
+        "simulations": [
+          "tree-suffix"
+        ]
+      },
+      {
+        "id": "ex4",
+        "title": "btree_insert_data",
+        "page": 14,
+        "requirements": [
+          "Submit btree_insert_data.c and ft_btree.h; btree_create_node is authorized.",
+          "Insert item in a sorted tree using a strcmp-like comparison function; values lower than a node go left and higher or equal values go right.",
+          "The root parameter points to the root pointer; on the first call it should point to NULL.",
+          "Prototype: void btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *));"
+        ],
+        "concepts": [
+          "Binary-search-tree invariant",
+          "Recursive insertion",
+          "Pointer-to-pointer",
+          "Duplicate placement"
+        ],
+        "goal": "Let comparisons select a branch until an empty child slot is found, then update that slot through its address.",
+        "connection": "Generalizes sorted-list insertion to a two-way branching structure.",
+        "observe": "Track each comparison and chosen link. Equality goes right. The new node changes one previously NULL link, including root for an empty tree.",
+        "suggestedSimulation": "Insert into an ordered tree",
+        "simulations": [
+          "tree-search",
+          "list-insert"
+        ]
+      },
+      {
+        "id": "ex5",
+        "title": "btree_search_item",
+        "page": 15,
+        "requirements": [
+          "Submit btree_search_item.c and ft_btree.h; no functions are authorized.",
+          "Return the first item matching data_ref under cmpf, traversing in infix order; return NULL if no matching element is found.",
+          "Prototype: void *btree_search_item(t_btree *root, void *data_ref, int (*cmpf)(void *, void *));"
+        ],
+        "concepts": [
+          "Inorder search",
+          "First match",
+          "Payload return",
+          "NULL result"
+        ],
+        "goal": "Carry a matching payload address back through recursive calls and stop once the required first match is found.",
+        "connection": "Uses infix traversal and comparator callbacks; unlike insertion, the requirement explicitly selects a traversal order.",
+        "observe": "Visits occur in infix order. The result is the stored item address, not a newly copied payload or the containing tree-node address.",
+        "suggestedSimulation": "Search a tree in infix order",
+        "simulations": [
+          "tree-search"
+        ]
+      },
+      {
+        "id": "ex6",
+        "title": "btree_level_count",
+        "page": 16,
+        "requirements": [
+          "Submit btree_level_count.c and ft_btree.h; no functions are authorized.",
+          "Return the size of the tree's largest branch.",
+          "Prototype: int btree_level_count(t_btree *root);",
+          "The PDF does not explicitly define an empty-tree result or whether branch size counts nodes or edges."
+        ],
+        "concepts": [
+          "Tree height",
+          "Recursive results",
+          "Maximum"
+        ],
+        "goal": "Compare the heights returned by the two child branches and extend the longer one by the current node.",
+        "connection": "Applies recursive return values and maximum selection to branching data.",
+        "observe": "Show each child's returned height before the parent combines them. Label the representative simulation's convention: NULL = 0 levels, leaf = 1 level.",
+        "suggestedSimulation": "Measure tree height",
+        "simulations": [
+          "tree-level",
+          "tree-prefix",
+          "factorial-recursive"
+        ]
+      },
+      {
+        "id": "ex7",
+        "title": "btree_apply_by_level",
+        "page": 17,
+        "requirements": [
+          "Submit btree_apply_by_level.c and ft_btree.h; malloc and free are authorized.",
+          "Visit the tree level by level and call applyf for every node.",
+          "Pass item, current_level (root 0, children 1, grandchildren 2, etc.), and is_first_elem (1 for the first node at that level, otherwise 0).",
+          "Prototype: void btree_apply_by_level(t_btree *root, void (*applyf)(void *item, int current_level, int is_first_elem));"
+        ],
+        "concepts": [
+          "Breadth-first traversal",
+          "Queue",
+          "Level metadata",
+          "Callbacks"
+        ],
+        "goal": "Keep shallower nodes ahead of deeper ones and identify the start of each level.",
+        "connection": "Uses dynamic structures to manage work; contrasts with the recursive depth-first traversals.",
+        "observe": "Show the pending queue, level number, and first-element flag as nodes are visited. A queue is a representative technique, not a mandated algorithm.",
+        "suggestedSimulation": "Visit a tree level by level",
+        "simulations": [
+          "tree-level",
+          "tree-prefix",
+          "tree-infix",
+          "tree-suffix"
+        ]
+      }
+    ],
+    "ambiguities": [
+      "btree_level_count says largest branch size without defining nodes versus edges or the NULL result; state the simulation convention.",
+      "Within-level left-to-right order in ex7 is conventional but is not explicitly specified in this PDF."
+    ],
+    "source": "01-c-binary-trees.pdf",
+    "path": "Modules\\07-dynamic-data-structures\\01-c-binary-trees"
+  },
+  {
+    "slug": "00-square",
+    "group": "rushes",
+    "title": "Square",
+    "summary": "Draw a rectangle using coordinates, loops, and border rules. Five variants share the same logic but use different corner and edge characters.",
+    "why": "This project turns a visual specification into precise cases, tests narrow rectangles, and connects small functions across source files.",
+    "prerequisites": [
+      "Function parameters",
+      "Nested loops",
+      "Conditions and comparison operators",
+      "Character output with write",
+      "Compiling multiple C files"
+    ],
+    "statedGoals": [
+      {
+        "text": "Create a program that prints rectangles with varying patterns using supplied dimensions.",
+        "page": 1
+      },
+      {
+        "text": "Every team member must understand the complete project and explain the work at defense.",
+        "page": 5
+      }
+    ],
+    "interpretation": "The central learning task is to translate row and column positions into character choices, place overlapping corner cases in a safe order, and test a reusable drawing function independently of main.",
+    "commonRequirements": [
+      "Only one Rush 0X variant is required: choose a team member's first name, convert its first letter to A=1 through Z=26, and use that value modulo 5 (PDF page 4).",
+      "Team size is 2, 3, or 4. Every team member must understand the complete program.",
+      "Follow the Norm and compile with cc -Wall -Wextra -Werror. Handle errors coherently, with an error message or by returning control.",
+      "No bonus section is present in this PDF."
+    ],
+    "exercises": [
+      {
+        "id": "ex00",
+        "title": "Rush0X",
+        "page": 10,
+        "requirements": [
+          "Submit ex00/main.c, ft_putchar.c, and rush0X.c for the assigned variant; write is the only authorized function.",
+          "The three files compile together; ft_putchar.c contains ft_putchar, and rush0X.c contains rush(int x, int y).",
+          "rush must print a rectangle x characters wide and y lines high.",
+          "The function must never crash or loop indefinitely. Defense replaces main to test other dimensions, including the shown rush(123, 42).",
+          "Handle invalid dimensions coherently; the PDF permits printing an error or simply returning control."
+        ],
+        "concepts": [
+          "Nested iteration",
+          "Width and height",
+          "Reusable functions",
+          "Boundary cases",
+          "Multi-file compilation"
+        ],
+        "goal": "Separate rectangle traversal, character selection, and output so changing the dimensions does not require changing the program logic.",
+        "connection": "Combines conditions, loops, and parameter passing into a small multi-file project.",
+        "observe": "Watch row and column counters, the chosen output character, and terminal growth. Width 1 or height 1 makes corner conditions overlap.",
+        "suggestedSimulation": "Draw a rectangle one character at a time",
+        "simulations": [
+          "square-0"
+        ]
+      },
+      {
+        "id": "rush00",
+        "title": "Rush 00",
+        "page": 12,
+        "requirements": [
+          "Apply the shared Rush0X requirements when this is the assigned variant; it is not an additional required project.",
+          "Use o for corners, - for horizontal edges, | for vertical edges, and spaces inside.",
+          "Examples: (5,3) prints o---o, |   |, o---o on separate lines; (5,1) prints o---o; (1,1) prints o; (1,5) prints o, |, |, |, o on separate lines.",
+          "The additional (4,4) example appears on PDF page 13."
+        ],
+        "concepts": [
+          "Borders",
+          "Symmetry",
+          "Single-row/column cases"
+        ],
+        "goal": "Identify corners before edges so narrow rectangles remain correct.",
+        "connection": "Applies the common coordinate-based drawing loop to one border pattern.",
+        "observe": "Highlight which border rule selected o, -, |, or a space, and show a newline after each row.",
+        "suggestedSimulation": "Rush 00 border rules",
+        "simulations": [
+          "square-0"
+        ]
+      },
+      {
+        "id": "rush01",
+        "title": "Rush 01",
+        "page": 14,
+        "requirements": [
+          "Apply the shared Rush0X requirements when this is the assigned variant.",
+          "Top-left /, top-right backslash, bottom-left backslash, bottom-right /; all noncorner edge characters are * and the interior is spaces.",
+          "Examples: (5,1) uses the top edge; (1,1) prints /; (1,5) prints /, *, *, *, backslash on separate lines.",
+          "The additional (4,4) example appears on PDF page 15."
+        ],
+        "concepts": [
+          "Distinct corner cases",
+          "Character escaping",
+          "Rule priority"
+        ],
+        "goal": "Distinguish all four corners and represent a backslash correctly in a C character literal.",
+        "connection": "Adds direction-specific corners to the common rectangle loop.",
+        "observe": "Show how one coordinate chooses a corner, and how the top or left rule takes priority when dimensions collapse to one.",
+        "suggestedSimulation": "Rush 01 asymmetric corners",
+        "simulations": [
+          "square-1"
+        ]
+      },
+      {
+        "id": "rush02",
+        "title": "Rush 02",
+        "page": 16,
+        "requirements": [
+          "Apply the shared Rush0X requirements when this is the assigned variant.",
+          "Both top corners are A, both bottom corners C, all other edge characters B, and the interior is spaces.",
+          "Examples: (5,3) prints ABBBA, B   B, CBBBC; (5,1) prints ABBBA; (1,1) prints A; (1,5) prints A, B, B, B, C on separate lines.",
+          "The additional (4,4) example appears on PDF page 17."
+        ],
+        "concepts": [
+          "Row-dependent rules",
+          "Corner priority",
+          "Nested loops"
+        ],
+        "goal": "Use the current row to distinguish top corners from bottom corners.",
+        "connection": "Reuses the common rectangle traversal with different character decisions.",
+        "observe": "The same column position prints A at the top, B on a vertical side, and C at the bottom.",
+        "suggestedSimulation": "Rush 02 top and bottom corners",
+        "simulations": [
+          "square-2"
+        ]
+      },
+      {
+        "id": "rush03",
+        "title": "Rush 03",
+        "page": 18,
+        "requirements": [
+          "Apply the shared Rush0X requirements when this is the assigned variant.",
+          "Both left corners are A, both right corners C, all other edge characters B, and the interior is spaces.",
+          "Examples: (5,3) prints ABBBC, B   B, ABBBC; (5,1) prints ABBBC; (1,1) prints A; (1,5) prints A, B, B, B, A on separate lines.",
+          "The additional (4,4) example appears on PDF page 19."
+        ],
+        "concepts": [
+          "Column-dependent rules",
+          "Corner priority",
+          "Nested loops"
+        ],
+        "goal": "Use the current column to distinguish left corners from right corners.",
+        "connection": "Contrasts with Rush 02: changing row-based corner decisions to column-based ones changes the pattern.",
+        "observe": "Top and bottom rows share a pattern. At width 1 the left corner wins, so both end characters are A.",
+        "suggestedSimulation": "Rush 03 left and right corners",
+        "simulations": [
+          "square-3"
+        ]
+      },
+      {
+        "id": "rush04",
+        "title": "Rush 04",
+        "page": 20,
+        "requirements": [
+          "Apply the shared Rush0X requirements when this is the assigned variant.",
+          "Top-left and bottom-right corners are A; top-right and bottom-left are C; other edges are B; interior is spaces.",
+          "Examples: (5,3) prints ABBBC, B   B, CBBBA; (5,1) prints ABBBC; (1,1) prints A; (1,5) prints A, B, B, B, C on separate lines.",
+          "The additional (4,4) example appears on PDF page 21."
+        ],
+        "concepts": [
+          "Diagonal corner mapping",
+          "Condition order",
+          "Degenerate dimensions"
+        ],
+        "goal": "Combine row and column checks to distinguish diagonally opposed corner pairs.",
+        "connection": "Brings together the corner decisions explored in the other variants.",
+        "observe": "Highlight the active row and column together; compare the normal rectangle to width 1, height 1, and 1 by 1.",
+        "suggestedSimulation": "Rush 04 diagonal corners",
+        "simulations": [
+          "square-4"
+        ]
+      }
+    ],
+    "ambiguities": [
+      "Plain text extraction collapses interior spaces; pattern rules were verified with pdftotext -layout from PDF pages 12 through 21.",
+      "The PDF does not demand a specific message or behavior for nonpositive dimensions beyond coherent error handling and no crash or infinite loop."
+    ],
+    "source": "00-square.pdf",
+    "path": "rushes\\00-square"
+  },
+  {
+    "slug": "01-sky-scraper",
+    "group": "rushes",
+    "title": "Sky_Scraper",
+    "summary": "Solve a 4 by 4 height puzzle: each row and column contains heights 1 to 4 once, and clues specify how many boxes are visible from each edge.",
+    "why": "The puzzle connects validation, arrays, conditions, and a search that can undo an unsuccessful choice. Visibility counting gives a concrete rule for testing a candidate solution.",
+    "prerequisites": [
+      "Arrays and indexing",
+      "Loops and conditions",
+      "String/argument parsing",
+      "Functions and recursion",
+      "Backtracking as a new concept"
+    ],
+    "statedGoals": [
+      {
+        "text": "Develop a program that solves a 4x4 visibility puzzle by arranging box heights according to input constraints.",
+        "page": 1
+      },
+      {
+        "text": "Every team member must understand the full project and explain its details at defense.",
+        "page": 4
+      }
+    ],
+    "interpretation": "The requirements suggest decomposing the program into parsing, row/column uniqueness checks, directional visibility counts, a search strategy, and output. Backtracking is a representative technique; the PDF requires a valid first solution, not one particular algorithm.",
+    "commonRequirements": [
+      "Team project; all teammates must understand the work and attend defense.",
+      "Follow the Norm and compile with cc -Wall -Wextra -Werror -o rush-01 *.c.",
+      "No bonus section or larger-grid requirement appears in this PDF."
+    ],
+    "exercises": [
+      {
+        "id": "ex00",
+        "title": "Rush-01",
+        "page": 9,
+        "requirements": [
+          "Submit all necessary files in ex00/; authorized functions are write, malloc, and free.",
+          "Fill a 4x4 grid with heights 1 through 4, placing each height exactly once in every row and column.",
+          "Each row must satisfy visibility clues from left and right; each column must satisfy clues from up and down. A taller box hides smaller boxes behind it.",
+          "Print the first solution encountered.",
+          "Accept the demonstrated single argument containing sixteen characters from '1' to '4', separated by spaces, ordered: four column-up, four column-down, four row-left, four row-right clues. Other input is an error (PDF page 10).",
+          "Print Error followed by a newline for invalid input or when no solution exists.",
+          "For the example clues 4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2, the shown rows are 1 2 3 4; 2 3 4 1; 3 4 1 2; 4 1 2 3, with spaces between values and a newline after each row."
+        ],
+        "concepts": [
+          "Input validation",
+          "2D arrays",
+          "Uniqueness constraints",
+          "Directional visibility",
+          "Backtracking",
+          "Error output"
+        ],
+        "goal": "Turn clues into checks, try one height at a time, and undo a choice when it cannot lead to a valid solution.",
+        "connection": "Builds on rectangle coordinates, arrays, parsing, and recursion. Unlike simple calculation, a failed partial state requires returning to an earlier decision.",
+        "observe": "First trace argument positions into clue slots. Then highlight a candidate grid cell, duplicate checks, maximum-so-far visibility counts, recursive descent, rejection, and resetting a cell to empty. Clearly label partial versus complete line checks.",
+        "suggestedSimulation": "Skyscraper validation and backtracking",
+        "simulations": [
+          "visibility",
+          "backtracking"
+        ]
+      }
+    ],
+    "ambiguities": [
+      "The PDF specifies the demonstrated input form as the only acceptable form; it does not separately enumerate every malformed whitespace case.",
+      "Backtracking is an instructional interpretation, not an explicitly required implementation.",
+      "There is no larger-grid bonus in this supplied version."
+    ],
+    "source": "01-sky-scraper.pdf",
+    "path": "rushes\\01-sky-scraper"
+  },
+  {
+    "slug": "02-rosetta-stone",
+    "group": "rushes",
+    "title": "Rosetta_Stone",
+    "summary": "Read a configurable number dictionary and convert a decimal number into words, including numbers larger than an unsigned int.",
+    "why": "This combines parsing, file operations, dynamic memory, and decomposition of a large task into reusable steps. The output must follow dictionary contents rather than hard-coded language strings.",
+    "prerequisites": [
+      "Strings and decimal digits",
+      "Command-line arguments",
+      "open/read/close",
+      "malloc/free and ownership",
+      "Structures or another dictionary representation",
+      "Makefiles"
+    ],
+    "statedGoals": [
+      {
+        "text": "Create a program that converts numbers to written words with a dictionary of customizable value mappings.",
+        "page": 1
+      },
+      {
+        "text": "Every team member must understand the full project and explain the work at defense.",
+        "page": 4
+      }
+    ],
+    "interpretation": "The project trains a data-driven design: keep large numbers as text, parse and validate dictionary entries, decompose numeric text into supported components, resolve their words, and clean up both on success and failure.",
+    "commonRequirements": [
+      "Team project; all teammates must understand the work and attend defense.",
+      "Follow the Norm and compile with cc -Wall -Wextra -Werror.",
+      "The Makefile must provide the executable target NAME, clean, and fclean; evaluation runs make fclean then make.",
+      "No bonus section is present in this PDF."
+    ],
+    "exercises": [
+      {
+        "id": "ex00",
+        "title": "rush-02",
+        "page": 8,
+        "requirements": [
+          "Submit Makefile and all necessary files under ex00/; name the executable rush-02. Authorized functions: write, malloc, free, open, read, close.",
+          "Accept one argument for the number using the reference dictionary, or two arguments with a replacement dictionary path first and the number second.",
+          "Invalid numeric input prints Error followed by a newline. Support values beyond unsigned int; the example explicitly accepts 0 despite the prose saying positive number.",
+          "Parse the supplied reference dictionary and use its stored values for output; values can be changed.",
+          "Dictionary entries have number, zero or more spaces, colon, zero or more spaces, and printable text. Handle dictionary numbers like atoi and trim spaces before/after the value (PDF page 9).",
+          "Reference keys remain present, values can change, extra entries may be added, entry order is arbitrary, and empty lines can occur.",
+          "Use the original entries when decomposing numbers; an extra key 54 does not replace combining the original keys 50 and 4.",
+          "Print Dict Error followed by a newline if dictionary parsing fails or the dictionary cannot resolve the requested value.",
+          "Free every heap allocation correctly; this is checked in evaluation.",
+          "Examples: 42 produces forty two; 0 produces zero; 10.4 produces Error; 100000 produces one hundred thousand. If key 20 is changed to hey everybody !, output those dictionary words for 20."
+        ],
+        "concepts": [
+          "Data-driven output",
+          "Dictionary parsing",
+          "File descriptors",
+          "Large numeric strings",
+          "Place-value decomposition",
+          "Error separation",
+          "Heap cleanup"
+        ],
+        "goal": "Separate reading and parsing data from converting a number, and avoid overflowing an integer by processing its digits as text.",
+        "connection": "Combines string handling, dynamic storage, file reads, structures, and build rules into a complete program.",
+        "observe": "Show file bytes entering a buffer, a parsed key/value entry, digit groups and selected dictionary keys, accumulated terminal words, and cleanup. Contrast invalid number Error with dictionary Dict Error.",
+        "suggestedSimulation": "Dictionary-backed number-to-words conversion",
+        "simulations": [
+          "dictionary",
+          "base-conversion",
+          "file-read",
+          "atoi"
+        ]
+      }
+    ],
+    "ambiguities": [
+      "The prose says positive number, but the explicit example accepts 0; the teaching material should use nonnegative decimal input and note that example.",
+      "Dictionary keys are parsed like atoi while the command-line number rejects 10.4; these are distinct parsing contexts.",
+      "The reference dictionary's complete contents are not attached within this PDF, so its full key set cannot be reconstructed from this document alone.",
+      "Behavior for duplicate dictionary keys and exact output spacing outside the examples is not separately specified."
+    ],
+    "source": "02-rosetta-stone.pdf",
+    "path": "rushes\\02-rosetta-stone"
+  }
+]
